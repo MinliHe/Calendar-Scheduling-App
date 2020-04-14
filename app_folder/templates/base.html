@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Calendar Scheduling App</title>
+    </head>
+    <body>
+      <div>
+         <h3>Calendar Scheduling App</h3>
+         <a href="/">Home</a>
+         <a href="/login">Log In</a>
+       </div>
+       <hr>
+
+       {% block content %}{% endblock %}
+
+       {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+                  <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+         {% endif %}
+       {% endwith %}
+
+    </body>
+</html>
