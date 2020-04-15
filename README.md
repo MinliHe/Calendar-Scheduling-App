@@ -18,9 +18,7 @@ Python 3.6 with pip required extensions:
 7. WTForms
 8. SQLAlchemy
 9. Flask-Bootstrap
-10. Werkzeug
-11. Jinja2
-12. datetime
+
 
 ### Installing
 
