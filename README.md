@@ -52,6 +52,10 @@ Then, type:
 ```
 flask run
 ```
+## Testing location: 
+
+## Sphinx Documentation location: 
+
 
 ## Author
 * **Shana Nguyen**
