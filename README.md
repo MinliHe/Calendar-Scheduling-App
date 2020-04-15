@@ -52,3 +52,9 @@ Then, type:
 ```
 flask run
 ```
+
+## Author
+* **Shana Nguyen**
+* **Hao Tu**
+* **Minli He**
+* **Jonathan Aguayo**
