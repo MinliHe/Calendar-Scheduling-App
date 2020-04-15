@@ -1,12 +1,22 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError
 from wtforms.validators import DataRequired, Email, DataRequired, EqualTo
+from .models import User
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
+
+    def validate_account(self, username, password):
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            raise ValidationError("Invalid Username")
+        else:
+            if user.password_hash != password:
+                raise ValidationError("Invalid Password")
+        return True
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])

@@ -1,21 +1,24 @@
 from flask import render_template
 from flask import redirect
 from flask import flash
-from app_folder import app
+from app_folder import app, db
 from .forms import LoginForm, RegistrationForm
+from .models import User
 
-# different URL the app will implement
 @app.route("/")
-# called view function
 def hello():
-    return render_template('index.html', title='Home')
+    return render_template('index.html', title='Home', User=User)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     current_form = LoginForm()
-    if current_form.validate_on_submit():
-        flash(f'Login requested for user {current_form.username.data}')
-        return redirect('/')
+    try:
+        if (current_form.validate_on_submit() and
+              current_form.validate_account(current_form.username.data, current_form.password.data)):
+            flash(f'{current_form.username.data} just logged in.')
+            return redirect('/')
+    except:
+        flash(f'Login credentials are incorrect. Please try again.')
     return render_template('login.html', title='Sign In', form=current_form)
 
 @app.route('/createAccount', methods=['GET', 'POST'])
