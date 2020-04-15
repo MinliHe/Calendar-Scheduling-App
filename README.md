@@ -1,5 +1,4 @@
 # Calendar-Scheduling-App
-Getting Started
 The computer should have Python version 3.6 as well as pip installed to setup a localhost web server to serve for the development of the project.
 
 Prerequisites:
