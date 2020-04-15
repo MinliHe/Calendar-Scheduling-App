@@ -1,3 +1,6 @@
+# calendar-Scheduling-App
+Scheduling meetings with others is difficult, and the Calendar Scheduling Application is meant to assist people who have many others who want to meet with them. By providing a space to put their availability and allowing visitors to make an appointment from selecting from the available times, this makes appointments easier to make and more organized.
+
 ## Getting Started
 
 The computer should have Python version 3.6 as well as pip installed to setup a localhost web server to serve for the development of the project.
