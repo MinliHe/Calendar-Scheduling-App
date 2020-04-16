@@ -55,7 +55,7 @@ flask run
 ## Features
 
 ### Register
-a user must have an account to access the web app. New users can create their own personal accounts by entering their name, a valid email address, and a password. Once registered, the user's credentials are saved via MySQL Database and will allow the user to login at any time. 
+A user must have an account to access the web app. New users can create their own personal accounts by entering their name, a valid email address, and a password. Once registered, the user's credentials are saved via MySQL Database and will allow the user to login at any time. 
 
 ### Login
 Existing users who have made accounts can log into the web app to access its features. Once a user is logged in, they are redirected to the homepage where they will be able to create, delete, change a calendar and logout.
