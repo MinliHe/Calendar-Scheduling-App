@@ -72,17 +72,15 @@ Event after being created will be display in the homepage. After the users hit s
 ### Edit An Event
 Users have the ability to fix any information about the event. By hitting the edit button below the event on the homepage, the edit form will be displayed to let the users decide what they want to keep and change. After hitting the submit button, it will go back to the homepage and display the event after editing.  
 
-### Delete Event
+### Delete An Event
 Users have the ability to delete events they no longer want to keep track of. By hitting the delete button below the event on the homepage, the event will be removed.
 
-### Share
+### Share An Event
 Users have the ability to send a message to ask other users who want to join this event through email.
 
-### Check Event
+### Check An Event
 In this feature, users have the ability to classify which event is coming and which event is Expired. The Expired event will be displayed in a column beside the column storing Expired events. Users can also check how many people will join this event.
 
-### Share
-Users have the ability to send a message to ask other users who want to join this event through email.
 
 
 ## Testing location: 
