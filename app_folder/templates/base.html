@@ -7,8 +7,11 @@
       <div>
          <h3>Calendar Scheduling App</h3>
          <a href="/">Home</a>
-         <a href="/login">Log In</a>
-         <a href="/logout">Log Out</a>
+         {% if current_user.is_anonymous %}
+           <a href="/login">Log In</a>
+         {% else %}
+           <a href="/logout">Log Out</a>
+         {% endif %}
        </div>
        <hr>
 
