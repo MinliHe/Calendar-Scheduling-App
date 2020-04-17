@@ -15,10 +15,10 @@ def login():
     try:
         if (current_form.validate_on_submit() and
               current_form.validate_account(current_form.username.data, current_form.password.data)):
-            flash(f'{current_form.username.data} just logged in.')
+            flash(format('{current_form.username.data} just logged in.}'))
             return redirect('/')
     except:
-        flash(f'Login credentials are incorrect. Please try again.')
+        flash(format('Login credentials are incorrect. Please try again.'))
     return render_template('login.html', title='Sign In', form=current_form)
 
 @app.route('/createAccount', methods=['GET', 'POST'])
