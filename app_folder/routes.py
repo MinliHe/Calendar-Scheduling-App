@@ -46,10 +46,10 @@ def createAccount():
         return redirect (url_for('index'))
     current_form = RegistrationForm()
     if current_form.validate_on_submit():
-        login_user = User(username = current_form.username.data, email = current_form.email.data)
+        login_user = User(username=current_form.username.data, email=current_form.email.data)
         login_user.set_password(current_form.password.data)
         db.session.add(login_user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('createAccount.html', title = 'Create Account', form = current_form)
+    return render_template('createAccount.html', title='Create Account', form=current_form)
