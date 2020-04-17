@@ -19,8 +19,7 @@ def load_user(user_id):
 def index():
     return render_template('index.html', title='Home', User=User, current_user=current_user)
 
-@a
-pp.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
