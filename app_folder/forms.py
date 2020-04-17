@@ -18,6 +18,13 @@ class LoginForm(FlaskForm):
                 raise ValidationError("Invalid Password")
         return True
 
+    def check_password(self, username, password):
+        user = User.query.filter_by(username=username).first()
+        if user.password_hash == password:
+            return True
+        else:
+            return False
+
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])

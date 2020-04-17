@@ -3,5 +3,7 @@
 {% block content %}
     <h1>Calendar Scheduling App Home Page</h1>
     <p>Welcome to the home page!</p>
-    <!-- {{ User.query.all()}} -->
+    {{ User.query.all()}}
+    <!-- current_user a property of flask-login -->
+    <h1>Hi, {{ current_user.username }}!</h1>
 {% endblock %}

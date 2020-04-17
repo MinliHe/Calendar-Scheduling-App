@@ -1,5 +1,10 @@
-from app_folder import db
+from app_folder import db, login_manager
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
+
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,6 +16,38 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return self.password_hash == password
+
+    def is_authenticated(self):
+        if self.password_hash == password:
+            return True
+        else:
+            return False
+
+    def is_active(self):
+        if self != None:
+            return True
+        else:
+            return False
+
+    def is_anonymous(self):
+        if self == None:
+            return True
+        else:
+            return False
+
+    def get_id(self):
+        return self.id
+
+    def get(self, id):
+        user = self.filter_by(id=id)
+        return user
+
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
