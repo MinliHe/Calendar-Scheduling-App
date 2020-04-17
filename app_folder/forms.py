@@ -9,15 +9,6 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
 
-    def validate_account(self, username, password):
-        user = User.query.filter_by(username=username).first()
-        if user is None:
-            raise ValidationError("Invalid Username")
-        else:
-            if user.password_hash != password:
-                raise ValidationError("Invalid Password")
-        return True
-
     def check_password(self, username, password):
         user = User.query.filter_by(username=username).first()
         if user.password_hash == password:
