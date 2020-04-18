@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Calendar Scheduling App Home Page</h1>
     <p>Welcome to the home page!</p>
-    {{ User.query.all()}}
+    <!-- {{ User.query.all()}} -->
     {% if current_user.is_anonymous %}
       <h1>Hi, Guest!</h1>
     {% else %}

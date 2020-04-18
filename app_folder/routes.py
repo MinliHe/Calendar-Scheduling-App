@@ -78,6 +78,10 @@ def createAccount():
         return redirect(url_for('login'))
     elif current_form.username.data != None:
         try:
+            if 'email' in current_form.errors:
+                flash(current_form.errors['email'][0])
+            if 'password2' in current_form.errors:
+                flash(current_form.errors['password2'][0])
             current_form.validate_username(current_form.username)
             current_form.validate_email(current_form.email)
         except ValidationError as e:

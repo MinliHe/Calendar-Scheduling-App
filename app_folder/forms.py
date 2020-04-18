@@ -15,16 +15,16 @@ class LoginForm(FlaskForm):
         '''This method takes the inputs from the LoginForm text fields and checks if password is associated with the username.
 
            Args:
-                username (String) : The username that will be used to retrieve an assocated password hash. 
+                username (String) : The username that will be used to retrieve an assocated password hash.
 
-                password (String) : The password that will be turned into a hash and be compared with the usernames associated password hash. 
+                password (String) : The password that will be turned into a hash and be compared with the usernames associated password hash.
 
            Returns:
-                   True if the password that was passed matches the password assosicated with the username that was passed. 
+                   True if the password that was passed matches the password assosicated with the username that was passed.
 
-                   False if the password that was passed does not match the password associated wiht the username that was passed. 
-                   
-                
+                   False if the password that was passed does not match the password associated wiht the username that was passed.
+
+
         '''
         user = User.query.filter_by(username=username).first()
         if user.password_hash == password:
@@ -36,18 +36,18 @@ class RegistrationForm(FlaskForm):
     '''This class defines the form that will be seen when a user tries to register an account in the Calendar-Scheduling-App
     '''
     username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    email = StringField('Email', validators=[DataRequired(), Email(message="Invalid email address.")])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField(
-        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+        'Repeat Password', validators=[DataRequired(), EqualTo('password', message="Passwords do not match.")])
     submit = SubmitField('Register')
 
     def validate_username(self, username):
         '''
-        This method checks if the username is still available and will raise an error if it is not. 
+        This method checks if the username is still available and will raise an error if it is not.
 
-        Args: 
-            username (String) : The username that will be checked for availability in the data base. 
+        Args:
+            username (String) : The username that will be checked for availability in the data base.
         '''
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
@@ -55,10 +55,10 @@ class RegistrationForm(FlaskForm):
 
     def validate_email(self, email):
         '''
-        This method checks if the email addresss that is passed is still available and will raise an error if it is not. 
+        This method checks if the email addresss that is passed is still available and will raise an error if it is not.
 
         Args:
-            email (String) : The email that will be checked for availability in the data base. 
+            email (String) : The email that will be checked for availability in the data base.
         '''
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
