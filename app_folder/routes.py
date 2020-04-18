@@ -12,6 +12,15 @@ current_user = flask_login.current_user
 
 @login_manager.user_loader
 def load_user(user_id):
+    '''
+    This method takes the ID of a user and returns the corresponding user object.
+
+    Args:
+         user_id (String) : The ID that will be used to find a corresponding user in the data base. 
+
+    Returns: 
+            The user Object that corresponds with the user_id that was passed or none if there is no corresponding user. 
+    '''
     return User.query.get(int(user_id))
 
 @app.route("/")

@@ -126,7 +126,7 @@
 <code class="descname">validate_username</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.RegistrationForm.validate_username" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method checks if the username is still available and will raise an error if it is not.</p>
 <dl class="docutils">
-<dt>Args: </dt>
+<dt>Args:</dt>
 <dd>username (String) : The username that will be checked for availability in the data base.</dd>
 </dl>
 </dd></dl>
@@ -219,27 +219,54 @@
 <span class="target" id="module-app_folder.routes"></span><dl class="function">
 <dt id="app_folder.routes.createAccount">
 <code class="descclassname">app_folder.routes.</code><code class="descname">createAccount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.createAccount" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method creates the webpage that will display when a guest wants to create an account.</p>
+<dl class="docutils">
+<dt>Returns: </dt>
+<dd>The HTML template that will be rendered when a guest wants to create an account.</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="app_folder.routes.index">
 <code class="descclassname">app_folder.routes.</code><code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.index" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method creates the webpage that will display when a guest first visits the application.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>The HTML template that will be rendered when a guest first visits the application. This is the home page.</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="app_folder.routes.load_user">
 <code class="descclassname">app_folder.routes.</code><code class="descname">load_user</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.load_user" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method takes the ID of a user and returns the corresponding user object.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>user_id (String) : The ID that will be used to find a corresponding user in the data base.</dd>
+<dt>Returns: </dt>
+<dd>The user Object that corresponds with the user_id that was passed or none if there is no corresponding user.</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="app_folder.routes.login">
 <code class="descclassname">app_folder.routes.</code><code class="descname">login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.login" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method creates the webpage that will display when a guest goes to log into their account.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>the HTML template that will be rendered when a guest wants to log into their account.</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="app_folder.routes.logout">
 <code class="descclassname">app_folder.routes.</code><code class="descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.logout" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method creates the webpage that will display when a guest logs out of the application.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>The HTML template that will be rendered when a guest wants to log out of the application.</dd>
+</dl>
+</dd></dl>
 
 </div>
 
