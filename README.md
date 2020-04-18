@@ -83,11 +83,6 @@ In this feature, users have the ability to classify which event is coming and wh
 
 
 
-## Testing location: 
-
-## Sphinx Documentation location: 
-
-
 ## Author
 * **Shana Nguyen**
 * **Hao Tu**
