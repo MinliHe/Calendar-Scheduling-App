@@ -4,6 +4,9 @@
     <h1>Calendar Scheduling App Home Page</h1>
     <p>Welcome to the home page!</p>
     {{ User.query.all()}}
-    <!-- current_user a property of flask-login -->
-    <h1>Hi, {{ current_user.username }}!</h1>
+    {% if current_user.is_anonymous %}
+      <h1>Hi, Guest!</h1>
+    {% else %}
+      <h1>Hi, {{ current_user.username }}!</h1>
+    {% endif %}
 {% endblock %}
