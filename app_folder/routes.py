@@ -6,6 +6,7 @@ from .forms import LoginForm, RegistrationForm
 from .models import User
 import flask_login
 from flask_login import login_user,login_required, logout_user
+from wtforms import ValidationError
 
 current_user = flask_login.current_user
 
@@ -27,7 +28,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
+            flash('**Invalid username or password**')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         return redirect('index')
@@ -50,6 +51,12 @@ def createAccount():
         login_user.set_password(current_form.password.data)
         db.session.add(login_user)
         db.session.commit()
-        flash('Congratulations, you are now a registered user!')
+        flash('**Congratulations, you are now a registered user!**')
         return redirect(url_for('login'))
+    elif current_form.username.data != None:
+        try:
+            current_form.validate_username(current_form.username)
+            current_form.validate_email(current_form.email)
+        except ValidationError as e:
+            flash(e)
     return render_template('createAccount.html', title='Create Account', form=current_form)
