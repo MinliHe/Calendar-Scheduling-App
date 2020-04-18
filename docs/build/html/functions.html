@@ -85,7 +85,8 @@
 <dl class="class">
 <dt id="app_folder.forms.RegistrationForm">
 <em class="property">class </em><code class="descclassname">app_folder.forms.</code><code class="descname">RegistrationForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.RegistrationForm" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
+<dd><p>This class defines the form that will be seen when a user tries to register an account in the Calendar-Scheduling-App</p>
+<dl class="attribute">
 <dt id="app_folder.forms.RegistrationForm.email">
 <code class="descname">email</code><em class="property"> = &lt;UnboundField(StringField, ('Email',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;, &lt;wtforms.validators.Email object&gt;]})&gt;</em><a class="headerlink" href="#app_folder.forms.RegistrationForm.email" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -113,12 +114,22 @@
 <dl class="method">
 <dt id="app_folder.forms.RegistrationForm.validate_email">
 <code class="descname">validate_email</code><span class="sig-paren">(</span><em>email</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.RegistrationForm.validate_email" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method checks if the email addresss that is passed is still available and will raise an error if it is not.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>email (String) : The email that will be checked for availability in the data base.</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="app_folder.forms.RegistrationForm.validate_username">
 <code class="descname">validate_username</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.RegistrationForm.validate_username" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method checks if the username is still available and will raise an error if it is not.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd>username (String) : The username that will be checked for availability in the data base.</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

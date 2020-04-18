@@ -18,10 +18,21 @@ def load_user(user_id):
 @app.route('/index')
 # @login_required
 def index():
+    '''This method creates the webpage that will display when a guest first visits the application.
+
+    Returns:
+            The HTML template that will be rendered when a guest first visits the application. This is the home page. 
+    '''
     return render_template('index.html', title='Home', User=User, current_user=current_user)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    '''
+    This method creates the webpage that will display when a guest goes to log into their account. 
+
+    Returns:
+            the HTML template that will be rendered when a guest wants to log into their account. 
+    '''
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = LoginForm()
@@ -37,12 +48,24 @@ def login():
 
 @app.route('/logout')
 def logout():
+    '''
+    This method creates the webpage that will display when a guest logs out of the application. 
+
+    Returns:
+            The HTML template that will be rendered when a guest wants to log out of the application.  
+    '''
     logout_user()
     return redirect(url_for('index'))
 
 
 @app.route('/createAccount', methods=['GET', 'POST'])
 def createAccount():
+    '''
+    This method creates the webpage that will display when a guest wants to create an account. 
+
+    Returns: 
+            The HTML template that will be rendered when a guest wants to create an account. 
+    '''
     if current_user.is_authenticated:
         return redirect (url_for('index'))
     current_form = RegistrationForm()
