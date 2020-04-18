@@ -43,10 +43,22 @@
 <dl class="class">
 <dt id="app_folder.forms.LoginForm">
 <em class="property">class </em><code class="descclassname">app_folder.forms.</code><code class="descname">LoginForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.LoginForm" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>This class defines the form that will be seen when a user tries to log into the Calendar-Scheduling-App.</p>
+<dl class="method">
 <dt id="app_folder.forms.LoginForm.check_password">
 <code class="descname">check_password</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.LoginForm.check_password" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method takes the inputs from the LoginForm text fields and checks if password is associated with the username.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">username (String) : The username that will be used to retrieve an assocated password hash.</p>
+<p class="last">password (String) : The password that will be turned into a hash and be compared with the usernames associated password hash.</p>
+</dd>
+<dt>Returns:</dt>
+<dd><p class="first">True if the password that was passed matches the password assosicated with the username that was passed.</p>
+<p class="last">False if the password that was passed does not match the password associated wiht the username that was passed.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="app_folder.forms.LoginForm.password">
@@ -138,44 +150,27 @@
 <dl class="class">
 <dt id="app_folder.models.User">
 <em class="property">class </em><code class="descclassname">app_folder.models.</code><code class="descname">User</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>This class models a user of this application and will hold a users Username and password hash</p>
+<dl class="method">
 <dt id="app_folder.models.User.check_password">
 <code class="descname">check_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User.check_password" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This function checks if a input password corresponds with the hash associated with the account.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd>password (String) : The password that will be checked.</dd>
+<dt>Returns:</dt>
+<dd>True if the password corresponds with the hash associated with the users account.</dd>
+</dl>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="app_folder.models.User.email">
 <code class="descname">email</code><a class="headerlink" href="#app_folder.models.User.email" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="app_folder.models.User.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User.get" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="app_folder.models.User.get_id">
-<code class="descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User.get_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="attribute">
 <dt id="app_folder.models.User.id">
 <code class="descname">id</code><a class="headerlink" href="#app_folder.models.User.id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="app_folder.models.User.is_active">
-<code class="descname">is_active</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User.is_active" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="app_folder.models.User.is_anonymous">
-<code class="descname">is_anonymous</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User.is_anonymous" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="app_folder.models.User.is_authenticated">
-<code class="descname">is_authenticated</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User.is_authenticated" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -191,7 +186,12 @@
 <dl class="method">
 <dt id="app_folder.models.User.set_password">
 <code class="descname">set_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User.set_password" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This functions generates a hash based on a users account password.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>password (String) : The password that a user chooses to associate with their account.</dd>
+</dl>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="app_folder.models.User.username">

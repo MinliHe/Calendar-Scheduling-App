@@ -8,6 +8,7 @@ def load_user(id):
     return User.query.get(int(id))
 
 class User(UserMixin, db.Model):
+    '''This class models a user of this application and will hold a users Username and password hash'''
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(128), index=True, unique=True)
@@ -19,9 +20,22 @@ class User(UserMixin, db.Model):
         return '<User {}>'.format(self.username)
 
     def set_password(self, password):
+        ''' This functions generates a hash based on a users account password.
+            
+            Args:
+                 password (String) : The password that a user chooses to associate with their account.            
+        '''
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
+        ''' This function checks if a input password corresponds with the hash associated with the account. 
+
+            Args: 
+                 password (String) : The password that will be checked. 
+
+            Returns:
+                    True if the password corresponds with the hash associated with the users account. 
+        '''
         return check_password_hash(self.password_hash, password)
 
 
