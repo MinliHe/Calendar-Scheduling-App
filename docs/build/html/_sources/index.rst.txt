@@ -10,7 +10,8 @@ Welcome to Calendar-Scheduling-App's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   installation
+   functions
 
 Indices and tables
 ==================

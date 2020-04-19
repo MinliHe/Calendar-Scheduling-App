@@ -13,11 +13,7 @@ Python 3.6 with pip required extensions:
 2. Flask-SQLAlchemy
 3. Flask-WTF
 4. Flask-Login
-5. Flask-Mail
-6. Flask-bcrypt
-7. WTForms
-8. SQLAlchemy
-9. Flask-Bootstrap
+
 
 
 ### Installing
@@ -36,21 +32,9 @@ pip install flask-wtf flask-sqlalchemy flask-login
 Apply the above command until every extension is installed.
 
 ## Running Flask Project
-
-Export the main file of the project by one of two following commands:
-
-For Windows:
+type:
 ```
-set FLASK_APP=<filename.py>
-```
-For Mac:
-```
-export FLASK_APP=<filename.py>
-```
-
-Then, type:
-```
-flask run
+python3 run.py
 ```
 ## Features
 
@@ -81,11 +65,6 @@ Users have the ability to send a message to ask other users who want to join thi
 ### Check An Event
 In this feature, users have the ability to classify which event is coming and which event is Expired. The Expired event will be displayed in a column beside the column storing Expired events. Users can also check how many people will join this event.
 
-
-
-## Testing location: 
-
-## Sphinx Documentation location: 
 
 
 ## Author
