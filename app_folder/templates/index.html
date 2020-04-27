@@ -13,10 +13,23 @@
         </button></a>
     {% else %}
       <h1>Hi, {{ current_user.username }}!</h1>
-      <h1> Your List Of Scheduled Meeting </h1>
-      <h2> 
+
+      <P>
+        <a href="/createEvent"><button>
+          Create Event
+        </button></a>
+        </P>
+  
+        <P>
+          <a href="/createEvent"><button>
+            Setting
+          </button></a>
+          </P>
+
+      <h2> Your List Of Scheduled Meeting </h2>
+      <h3> 
          <link rel = "stylesheet" href="meetingsPage.css" />
-      </h2>
+      </h3>
 
       <table border = "5" width = "100%" cellpadding = "4" cellspacing = "3">
         <tr>
@@ -26,5 +39,6 @@
             <th> Participants </th>   
         </tr>
       </table>
+
     {% endif %}
 {% endblock %}

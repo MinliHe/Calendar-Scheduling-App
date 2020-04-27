@@ -96,3 +96,7 @@ def createAccount():
         except ValidationError as e:
             flash(e)
     return render_template('createAccount.html', title='Create Account', form=current_form)
+
+@app.route('/createEvent', methods=['GET', 'POST'])
+def createEvent():
+        return "Create Event"
