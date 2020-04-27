@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Settings</h1>
+
+    <form action="" method="post" style="width=250"   class="form-group" novalidate>
+		{{ form.hidden_tag() }}
+        <p>{{ form.submit(class_="form-control") }}</p>
+    </form>
+	Availability<br/>
+	<p>{{user.availability}} </p>
+	<form action="" method="post" style="width=250"  class="form-group" novalidate>
+		{{ form.hidden_tag() }}
+		<div class="input-group clockpicker">
+			{{ availability_form.from_time(class_="form-control") }}
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-time"></span>
+			</span>
+		</div>
+		<div class="input-group clockpicker">
+			{{ availability_form.to_time(class_="form-control") }}
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-time"></span>
+			</span>
+		</div>		
+        <p>{{ availability_form.submit(class_="form-control") }}</p>
+    </form>
+	
+	Meetings length<br/>
+	<p>{{user.meetings}} </p>
+	<form action="" method="post" style="width=250"  class="form-group" novalidate>
+		{{ form.hidden_tag() }}
+		<div class="input-group clockpicker">
+			{{ meetings_form.length(class_="form-control") }}
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-time"></span>
+			</span>
+		</div>		
+        <p>{{ meetings_form.submit(class_="form-control") }}</p>
+    </form>
+	
+<script type="text/javascript">
+		$( document ).ready(function() {
+			$('.clockpicker').clockpicker({
+				placement: 'top',
+				align: 'left',
+				donetext: 'Done'
+			});
+		});			
+</script>
+<style>
+input, select, textarea { max-width: 280px; }
+</style>
+{% endblock %}

@@ -1,0 +1,316 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Functions &#8212; Calendar-Scheduling-App  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="How to install Calendar-Scheduling-App" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-app_folder.forms">
+<span id="functions"></span><h1>Functions<a class="headerlink" href="#module-app_folder.forms" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="app_folder.forms.LoginForm">
+<em class="property">class </em><code class="descclassname">app_folder.forms.</code><code class="descname">LoginForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.LoginForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class defines the form that will be seen when a user tries to log into the Calendar-Scheduling-App.</p>
+<dl class="method">
+<dt id="app_folder.forms.LoginForm.check_password">
+<code class="descname">check_password</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.LoginForm.check_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method takes the inputs from the LoginForm text fields and checks if password is associated with the username.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><p class="first">username (String) : The username that will be used to retrieve an assocated password hash.</p>
+<p class="last">password (String) : The password that will be turned into a hash and be compared with the usernames associated password hash.</p>
+</dd>
+<dt>Returns:</dt>
+<dd><p class="first">True if the password that was passed matches the password assosicated with the username that was passed.</p>
+<p class="last">False if the password that was passed does not match the password associated wiht the username that was passed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.forms.LoginForm.password">
+<code class="descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, ('Password',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#app_folder.forms.LoginForm.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.forms.LoginForm.remember_me">
+<code class="descname">remember_me</code><em class="property"> = &lt;UnboundField(BooleanField, ('Remember Me',), {})&gt;</em><a class="headerlink" href="#app_folder.forms.LoginForm.remember_me" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.forms.LoginForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Sign In',), {})&gt;</em><a class="headerlink" href="#app_folder.forms.LoginForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.forms.LoginForm.username">
+<code class="descname">username</code><em class="property"> = &lt;UnboundField(StringField, ('Username',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#app_folder.forms.LoginForm.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app_folder.forms.RegistrationForm">
+<em class="property">class </em><code class="descclassname">app_folder.forms.</code><code class="descname">RegistrationForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.RegistrationForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class defines the form that will be seen when a user tries to register an account in the Calendar-Scheduling-App</p>
+<dl class="attribute">
+<dt id="app_folder.forms.RegistrationForm.email">
+<code class="descname">email</code><em class="property"> = &lt;UnboundField(StringField, ('Email',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;, &lt;wtforms.validators.Email object&gt;]})&gt;</em><a class="headerlink" href="#app_folder.forms.RegistrationForm.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.forms.RegistrationForm.password">
+<code class="descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, ('Password',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#app_folder.forms.RegistrationForm.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.forms.RegistrationForm.password2">
+<code class="descname">password2</code><em class="property"> = &lt;UnboundField(PasswordField, ('Repeat Password',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;, &lt;wtforms.validators.EqualTo object&gt;]})&gt;</em><a class="headerlink" href="#app_folder.forms.RegistrationForm.password2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.forms.RegistrationForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Register',), {})&gt;</em><a class="headerlink" href="#app_folder.forms.RegistrationForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.forms.RegistrationForm.username">
+<code class="descname">username</code><em class="property"> = &lt;UnboundField(StringField, ('Username',), {'validators': [&lt;wtforms.validators.DataRequired object&gt;]})&gt;</em><a class="headerlink" href="#app_folder.forms.RegistrationForm.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app_folder.forms.RegistrationForm.validate_email">
+<code class="descname">validate_email</code><span class="sig-paren">(</span><em>email</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.RegistrationForm.validate_email" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method checks if the email addresss that is passed is still available and will raise an error if it is not.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>email (String) : The email that will be checked for availability in the data base.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="app_folder.forms.RegistrationForm.validate_username">
+<code class="descname">validate_username</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.forms.RegistrationForm.validate_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method checks if the username is still available and will raise an error if it is not.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>username (String) : The username that will be checked for availability in the data base.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-app_folder.models"></span><dl class="class">
+<dt id="app_folder.models.Post">
+<em class="property">class </em><code class="descclassname">app_folder.models.</code><code class="descname">Post</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.Post" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="app_folder.models.Post.body">
+<code class="descname">body</code><a class="headerlink" href="#app_folder.models.Post.body" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.models.Post.id">
+<code class="descname">id</code><a class="headerlink" href="#app_folder.models.Post.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.models.Post.timestamp">
+<code class="descname">timestamp</code><a class="headerlink" href="#app_folder.models.Post.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.models.Post.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#app_folder.models.Post.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app_folder.models.User">
+<em class="property">class </em><code class="descclassname">app_folder.models.</code><code class="descname">User</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class models a user of this application and will hold a users Username and password hash</p>
+<dl class="method">
+<dt id="app_folder.models.User.check_password">
+<code class="descname">check_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User.check_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function checks if a input password corresponds with the hash associated with the account.</p>
+<dl class="docutils">
+<dt>Args: </dt>
+<dd>password (String) : The password that will be checked.</dd>
+<dt>Returns:</dt>
+<dd>True if the password corresponds with the hash associated with the users account.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.models.User.email">
+<code class="descname">email</code><a class="headerlink" href="#app_folder.models.User.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.models.User.id">
+<code class="descname">id</code><a class="headerlink" href="#app_folder.models.User.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.models.User.password_hash">
+<code class="descname">password_hash</code><a class="headerlink" href="#app_folder.models.User.password_hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.models.User.posts">
+<code class="descname">posts</code><a class="headerlink" href="#app_folder.models.User.posts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app_folder.models.User.set_password">
+<code class="descname">set_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.User.set_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>This functions generates a hash based on a users account password.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>password (String) : The password that a user chooses to associate with their account.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="app_folder.models.User.username">
+<code class="descname">username</code><a class="headerlink" href="#app_folder.models.User.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="app_folder.models.load_user">
+<code class="descclassname">app_folder.models.</code><code class="descname">load_user</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.models.load_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<span class="target" id="module-app_folder.routes"></span><dl class="function">
+<dt id="app_folder.routes.createAccount">
+<code class="descclassname">app_folder.routes.</code><code class="descname">createAccount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.createAccount" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method creates the webpage that will display when a guest wants to create an account.</p>
+<dl class="docutils">
+<dt>Returns: </dt>
+<dd>The HTML template that will be rendered when a guest wants to create an account.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_folder.routes.index">
+<code class="descclassname">app_folder.routes.</code><code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method creates the webpage that will display when a guest first visits the application.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>The HTML template that will be rendered when a guest first visits the application. This is the home page.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_folder.routes.load_user">
+<code class="descclassname">app_folder.routes.</code><code class="descname">load_user</code><span class="sig-paren">(</span><em>user_id</em><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.load_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method takes the ID of a user and returns the corresponding user object.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>user_id (String) : The ID that will be used to find a corresponding user in the data base.</dd>
+<dt>Returns: </dt>
+<dd>The user Object that corresponds with the user_id that was passed or none if there is no corresponding user.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_folder.routes.login">
+<code class="descclassname">app_folder.routes.</code><code class="descname">login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method creates the webpage that will display when a guest goes to log into their account.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>the HTML template that will be rendered when a guest wants to log into their account.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app_folder.routes.logout">
+<code class="descclassname">app_folder.routes.</code><code class="descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app_folder.routes.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method creates the webpage that will display when a guest logs out of the application.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>The HTML template that will be rendered when a guest wants to log out of the application.</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">How to install Calendar-Scheduling-App</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Jonathan Aguayo, Minli He, Shana Nguyen, Hao Tu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/functions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

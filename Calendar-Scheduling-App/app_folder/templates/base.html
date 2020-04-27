@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>Calendar Scheduling App</title>
+	   <link rel="stylesheet" type="text/css" href="static/assets/css/bootstrap.min.css">
+	   <link rel="stylesheet" type="text/css" href="static/dist/bootstrap-clockpicker.min.css">
+	   <link rel="stylesheet" type="text/css" href="static/assets/css/github.min.css">
+    </head>
+    <body>
+	<script type="text/javascript" src="static/assets/js/jquery.min.js"></script>
+		<script type="text/javascript" src="static/assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="static/dist/bootstrap-clockpicker.min.js"></script>
+      <div>
+         <h3>Calendar Scheduling App</h3>
+         <a href="/">Home</a>
+         {% if current_user.is_anonymous %}
+           <a href="/login">Log In</a>
+         {% else %}
+		    <a href="/settings">Settings</a>
+           <a href="/logout">Log Out</a>
+         {% endif %}
+       </div>
+       <hr>
+
+       {% block content %}{% endblock %}
+
+       {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            {% for message in messages %}
+              <p>{{ message }}<p>
+            {% endfor %}
+         {% endif %}
+       {% endwith %}		
+    </body>
+</html>
