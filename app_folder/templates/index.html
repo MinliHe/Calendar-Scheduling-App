@@ -6,6 +6,11 @@
     <!-- {{ User.query.all()}} -->
     {% if current_user.is_anonymous %}
       <h1>Hi, Guest!</h1>
+      <br>
+        <p>Don't have an account?</p>
+        <a href="/createAccount"><button>
+          Create an Account
+        </button></a>
     {% else %}
       <h1>Hi, {{ current_user.username }}!</h1>
       <h1> Your List Of Scheduled Meeting </h1>
