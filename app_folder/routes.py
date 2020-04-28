@@ -9,6 +9,7 @@ import flask
 from flask_login import login_user,login_required, logout_user
 from wtforms import ValidationError
 from flask import request
+import datetime
 
 current_user = flask_login.current_user
 
@@ -102,18 +103,20 @@ def createAccount():
 
 @app.route('/createEvent', methods=['GET', 'POST'])
 def createEvent():
-    meetingDate = meetingDate
-    meetingTime = meetingTime
-    descriptionOfMeeting = descriptionOfMeeting
-    participants = participants
+    if request.method == 'POST':
+        try:
+            meetingDate = request.form['meetingDate']
+            meetingTime = request.form['meetingTime']
+            descriptionOfMeeting = request.form['descriptionOfMeeting']
+            participants = request.form['participants']
 
-    if meetingDate >= datetime.utcnow
+    if meetingDate >= datetime.utcnow :
         db.session.add(meetingDate)
         db.session.commit()
     else:
         flash('Pleasse choose another date and time.')
 
-    if meetingTime >= datetime.utcnow
+    if meetingTime >= datetime.utcnow :
         db.session.add(meetingTime)
         db.session.commit()
     else:
