@@ -65,3 +65,10 @@ class Meetings(UserMixin, db.Model):
 
 	def __repr__(self):
 		return '<Meetings length {}>'.format(self.length)
+
+class listOfMeetings(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    meetingDate = db.Column(db.Integer)
+    meetingTime = db.Column(db.Integer)
+    descriptionOfMeeting = db.Column(db.String(150))
+    participants = db.Column(db.String(64))
