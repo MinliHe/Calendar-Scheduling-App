@@ -63,3 +63,15 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
+
+class DeleteAccountForm(FlaskForm):
+	submit = SubmitField('Delete Account')
+
+class AvailabitityForm(FlaskForm):
+	from_time = StringField('From time', validators=[DataRequired()])
+	to_time = StringField('From time', validators=[DataRequired()])
+	submit = SubmitField('Set Availability')
+
+class MeetingsForm(FlaskForm):
+	length = StringField('Length of meetings', validators=[DataRequired()])
+	submit = SubmitField('Set Meetings length')
