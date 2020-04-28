@@ -104,23 +104,16 @@ def createAccount():
 @app.route('/createEvent', methods=['GET', 'POST'])
 def createEvent():
     if request.method == 'POST':
-        try:
             meetingDate = request.form['meetingDate']
             meetingTime = request.form['meetingTime']
             descriptionOfMeeting = request.form['descriptionOfMeeting']
             participants = request.form['participants']
 
-    if meetingDate >= datetime.utcnow :
-        db.session.add(meetingDate)
-        db.session.commit()
-    else:
-        flash('Pleasse choose another date and time.')
+    db.session.add(meetingDate)
+    db.session.commit()
 
-    if meetingTime >= datetime.utcnow :
-        db.session.add(meetingTime)
-        db.session.commit()
-    else:
-        flash('Pleasse choose another date and time.')
+    db.session.add(meetingTime)
+    db.session.commit()
 
     db.session.add(descriptionOfMeeting)
     db.session.commit()
@@ -128,7 +121,13 @@ def createEvent():
     db.session.add(participants)
     db.session.commit()
     
-    return render_template('creatEvent.html', title='Schedule A Meeting', form = form)
+    return render_template('creatEvent.html', title='Schedule A Meeting', meetingDate = meetingDate, 
+                            meetingTime = meetingTime, descriptionOfMeeting = descriptionOfMeeting,
+                            participants = participants)
+
+@app.route('/meetingsPage', methods=['GET', 'POST'])
+def meetingsPage():
+    return render_template('meetingsPage.html', title='Scheduled Meeting List')
 
 
 @app.route('/settings', methods=['GET', 'POST'])
