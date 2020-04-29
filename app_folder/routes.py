@@ -10,16 +10,11 @@ from flask_login import login_user,login_required, logout_user
 from wtforms import ValidationError
 from flask import request
 import datetime
-<<<<<<< HEAD
 from .models import CustomHTMLCalendar
-
-
-=======
 from flask_wtf import FlaskForm
 from datetime import date
 from wtforms.fields.html5 import DateField
 from wtforms.fields.html5 import DateTimeField
->>>>>>> 6f682f54f6397a625e3d6115ee584acd4244c5a0
 
 current_user = flask_login.current_user
 cal = CustomHTMLCalendar(0)
