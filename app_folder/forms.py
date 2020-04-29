@@ -1,11 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError, validators, TextField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError,HiddenField,BooleanField
 from wtforms.validators import DataRequired, Email, DataRequired, EqualTo
 from .models import User
-from wtforms_components import TimeField, read_only, DateRange
-from datetime import datetime, date
-from wtforms.fields import DateField
- 
+
 class LoginForm(FlaskForm):
     '''This class defines the form that will be seen when a user tries to log into the Calendar-Scheduling-App.
     '''
@@ -69,22 +66,16 @@ class RegistrationForm(FlaskForm):
 
 class DeleteAccountForm(FlaskForm):
 	submit = SubmitField('Delete Account')
-
+	
 class AvailabitityForm(FlaskForm):
 	from_time = StringField('From time', validators=[DataRequired()])
 	to_time = StringField('From time', validators=[DataRequired()])
 	submit = SubmitField('Set Availability')
-
+	
 class MeetingsForm(FlaskForm):
 	length = StringField('Length of meetings', validators=[DataRequired()])
 	submit = SubmitField('Set Meetings length')
-
-class ScheduledMeetingForm(FlaskForm):
-    meetingDate = DateField (validators = [DateRange(min=datetime.today())])
-    meetingTime = DateField (validators = [DateRange(min=date.today())])
-    descriptionOfMeeting = TextField('descriptionOfMeeting')
-    participants = TextField('participants')
-
-    def __init__(self, *args, **kwargs):
-        super(ScheduledMeetingForm, self).__init__(*args, **kwargs)
-        read_only(self.descriptionOfMeeting)
+	
+class EmailConfirmationForm(FlaskForm):
+	confirmation = StringField('From time', validators=[DataRequired()])
+	submit = SubmitField('Set Email Confirmation')

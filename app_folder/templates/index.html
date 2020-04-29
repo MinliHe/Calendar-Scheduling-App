@@ -6,13 +6,9 @@
     <!-- {{ User.query.all()}} -->
     {% if current_user.is_anonymous %}
       <h1>Hi, Guest!</h1>
-      <br>
-        <p>Don't have an account?</p>
-        <a href="/createAccount"><button>
-          Create an Account
-        </button></a>
     {% else %}
       <h1>Hi, {{ current_user.username }}!</h1>
+<<<<<<< HEAD
 
       <P>
         <a href="/meetingsPage"><button>
@@ -20,5 +16,7 @@
         </button></a>
       </P>
 
+=======
+>>>>>>> 118c9f5a63af94fabaee2e9abe13ec2ffce1cb8a
     {% endif %}
 {% endblock %}

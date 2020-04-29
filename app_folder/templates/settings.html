@@ -38,7 +38,12 @@
 		</div>		
         <p>{{ meetings_form.submit(class_="form-control") }}</p>
     </form>
-	
+	Email confirmation Setting<br/>
+	<form action="" method="post" style="width=250"  class="form-group" novalidate>
+		{{ form.hidden_tag() }}
+		{{ email_form.confirmation(value=user.email_confirmation,class_="form-control") }}
+        <p>{{ email_form.submit(class_="form-control") }}</p>
+    </form>
 <script type="text/javascript">
 		$( document ).ready(function() {
 			$('.clockpicker').clockpicker({
