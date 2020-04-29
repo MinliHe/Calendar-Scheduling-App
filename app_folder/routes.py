@@ -10,8 +10,12 @@ from flask_login import login_user,login_required, logout_user
 from wtforms import ValidationError
 from flask import request
 import datetime
+from .models import CustomHTMLCalendar
+
+
 
 current_user = flask_login.current_user
+cal = CustomHTMLCalendar(0)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -35,7 +39,7 @@ def index():
     Returns:
             The HTML template that will be rendered when a guest first visits the application. This is the home page.
     '''
-    return render_template('index.html', title='Home', User=User, current_user=current_user)
+    return render_template('index.html', title='Home', User=User, current_user=current_user,cal=cal.formatmonth(datetime.date.today().year, datetime.date.today().month))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

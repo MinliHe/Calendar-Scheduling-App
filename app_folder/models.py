@@ -2,6 +2,7 @@ from app_folder import db, login_manager
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from calendar import HTMLCalendar
 
 @login_manager.user_loader
 def load_user(id):
@@ -72,3 +73,21 @@ class listOfMeetings(UserMixin, db.Model):
     meetingTime = db.Column(db.Integer)
     descriptionOfMeeting = db.Column(db.String(150))
     participants = db.Column(db.String(64))
+
+class CustomHTMLCalendar(HTMLCalendar):
+    def formatday(self, day, weekday):
+        """This method returns a line of html that is used to create the calendar. Each date of the calendar is a link that will open a new page and redirect you to google.com
+           This link can be changed to redirect to another website later on. 
+
+           Args:
+                day (String): The date, such as 1, 2, 3 etc. 
+                weekday (String): The day of the week such as mon, tue, wed, etc. 
+           Returns:
+                   A string corresponding to the html code that should be written for each day in the month. If the day is 0, this method will return html code to be blank. 
+                   If the day is within the date range of the month, the method will return the html to represent the day of the month with each day being a link. 
+        """
+        if day == 0:
+            return '<td class="noday">&nbsp;</td>' # day outside month
+        else:
+            return '<td class="%s"><a href="%s" target="_blank">%d</a></td>' % (self.cssclasses[weekday], "https://www.google.com/", day)
+    
