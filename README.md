@@ -18,7 +18,7 @@ Python 3.6 with pip required extensions:
 
 ### Installing
 
-Clone this git repo then install the required extensions. 
+Clone this git repo then install the required extensions.
 Use Terminal to install each extension:
 
 Install Flask:
@@ -27,7 +27,7 @@ pip install Flask
 ```
 Install flask-wtf, flask-sqlalchemy, flask-login:
 ```
-pip install flask-wtf flask-sqlalchemy flask-login
+pip install flask-wtf flask-sqlalchemy flask-login flask_migrate
 ```
 Apply the above command until every extension is installed.
 
@@ -39,13 +39,13 @@ python3 run.py
 ## Features
 
 ### Register
-A user must have an account to access the web app. New users can create their own personal accounts by entering their name, a valid email address, and a password. Once registered, the user's credentials are saved via MySQL Database and will allow the user to login at any time. 
+A user must have an account to access the web app. New users can create their own personal accounts by entering their name, a valid email address, and a password. Once registered, the user's credentials are saved via MySQL Database and will allow the user to login at any time.
 
 ### Login
 Existing users who have made accounts can log into the web app to access its features. Once a user is logged in, they are redirected to the homepage where they will be able to create, delete, change a calendar and logout.
 
-### Logout 
-Users who are logged into the web app can log out too. Logging out will save the user's information until the next login via database. 
+### Logout
+Users who are logged into the web app can log out too. Logging out will save the user's information until the next login via database.
 
 ### Creating An Event
 Creating an event is the main feature of this web app. Users enter a day/time, and leave a brief event description.A warning message will show to the users if there two events are overlapped before users hit the submit button. After hitting the submit button, the information of this event will be stored to the database.
