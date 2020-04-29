@@ -2,7 +2,7 @@ from flask import render_template
 from flask import redirect
 from flask import flash, url_for
 from app_folder import app, db, login_manager
-from .forms import LoginForm, RegistrationForm, DeleteAccountForm, AvailabitityForm, MeetingsForm
+from .forms import LoginForm, RegistrationForm, DeleteAccountForm, AvailabitityForm, MeetingsForm, ScheduledMeetingForm
 from .models import User
 import flask_login
 import flask
@@ -10,6 +10,10 @@ from flask_login import login_user,login_required, logout_user
 from wtforms import ValidationError
 from flask import request
 import datetime
+from flask_wtf import FlaskForm
+from datetime import date
+from wtforms.fields.html5 import DateField
+from wtforms.fields.html5 import DateTimeField
 
 current_user = flask_login.current_user
 
@@ -100,7 +104,7 @@ def createAccount():
             flash(e)
     return render_template('createAccount.html', title='Create Account', form=current_form)
 
-
+'''
 @app.route('/createEvent', methods=['GET', 'POST'])
 def createEvent():
     if request.method == 'POST':
@@ -124,10 +128,11 @@ def createEvent():
     return render_template('creatEvent.html', title='Schedule A Meeting', meetingDate = meetingDate, 
                             meetingTime = meetingTime, descriptionOfMeeting = descriptionOfMeeting,
                             participants = participants)
-
+'''
 @app.route('/meetingsPage', methods=['GET', 'POST'])
 def meetingsPage():
-    return render_template('meetingsPage.html', title='Scheduled Meeting List')
+    form = ScheduledMeetingForm()
+    return render_template('meetingsPage.html', title='Scheduled Meeting List', form = form)
 
 
 @app.route('/settings', methods=['GET', 'POST'])
