@@ -1,8 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError, validators
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError, validators, TextField
 from wtforms.validators import DataRequired, Email, DataRequired, EqualTo
 from .models import User
-
+from wtforms_components import TimeField, read_only, DateRange
+from datetime import datetime, date
+from wtforms.fields import DateField
+ 
 class LoginForm(FlaskForm):
     '''This class defines the form that will be seen when a user tries to log into the Calendar-Scheduling-App.
     '''
@@ -75,3 +78,13 @@ class AvailabitityForm(FlaskForm):
 class MeetingsForm(FlaskForm):
 	length = StringField('Length of meetings', validators=[DataRequired()])
 	submit = SubmitField('Set Meetings length')
+
+class ScheduledMeetingForm(FlaskForm):
+    meetingDate = DateField (validators = [DateRange(min=datetime.today())])
+    meetingTime = DateField (validators = [DateRange(min=date.today())])
+    descriptionOfMeeting = TextField('descriptionOfMeeting')
+    participants = TextField('participants')
+
+    def __init__(self, *args, **kwargs):
+        super(ScheduledMeetingForm, self).__init__(*args, **kwargs)
+        read_only(self.descriptionOfMeeting)
