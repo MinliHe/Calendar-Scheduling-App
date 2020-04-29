@@ -1,32 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Calendar Scheduling App Home Page</h1>
-<p>Welcome to the home page!</p>
-<!-- {{ User.query.all()}} -->
+    <h1>Calendar Scheduling App Home Page</h1>
+    <p>Welcome to the home page!</p>
+    <!-- {{ User.query.all()}} -->
     {% if current_user.is_anonymous %}
-<h1>Hi, Guest!</h1>
-<br>
-<p>Don't have an account?</p>
-<a href="/createAccount">
-    <button>
-        Create an Account
-    </button>
-</a>
+      <h1>Hi, Guest!</h1>
     {% else %}
-<h1>Hi, {{ current_user.username }}!</h1>
-
-{{cal|safe}}
-
-<P>
-    <a href="/meetingPage">
-        <button>
-            Check Scheduled Meeting
-        </button>
-    </a>
-</P>
-
+      <h1>Hi, {{ current_user.username }}!</h1>
     {% endif %}
 {% endblock %}
-
-
