@@ -109,8 +109,9 @@ def createEvent():
             meetingTime = request.form['meetingTime']
             descriptionOfMeeting = request.form['descriptionOfMeeting']
             participants = request.form['participants']
-
-    if meetingDate >= datetime.utcnow :
+        except:
+            print("An exception occurred")
+    if meetingDate >= datetime.utcnow:
         db.session.add(meetingDate)
         db.session.commit()
     else:
@@ -127,7 +128,7 @@ def createEvent():
 
     db.session.add(participants)
     db.session.commit()
-    
+
     return render_template('creatEvent.html', title='Schedule A Meeting', form = form)
 
 
@@ -138,7 +139,7 @@ def settings():
 	meetings_form = MeetingsForm(request.form)
 	current_user = flask_login.current_user
 	if request.method == 'POST':
-		if 'Delete Account' == request.form['submit'] :
+		if 'Delete Account' == request.form['submit']:
 			db.session.delete(current_user)
 			db.session.commit()
 			print("Deleting account")
