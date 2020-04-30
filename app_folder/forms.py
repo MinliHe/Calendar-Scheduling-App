@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError,HiddenField,BooleanField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError, validators
 from wtforms.validators import DataRequired, Email, DataRequired, EqualTo
 from .models import User
 
@@ -66,16 +66,12 @@ class RegistrationForm(FlaskForm):
 
 class DeleteAccountForm(FlaskForm):
 	submit = SubmitField('Delete Account')
-	
+
 class AvailabitityForm(FlaskForm):
 	from_time = StringField('From time', validators=[DataRequired()])
 	to_time = StringField('From time', validators=[DataRequired()])
 	submit = SubmitField('Set Availability')
-	
+
 class MeetingsForm(FlaskForm):
 	length = StringField('Length of meetings', validators=[DataRequired()])
 	submit = SubmitField('Set Meetings length')
-	
-class EmailConfirmationForm(FlaskForm):
-	confirmation = StringField('From time', validators=[DataRequired()])
-	submit = SubmitField('Set Email Confirmation')
