@@ -25,9 +25,9 @@ Install Flask:
 ```
 pip install Flask
 ```
-Install flask-wtf, flask-sqlalchemy, flask-login:
+Install flask-wtf, flask-sqlalchemy, flask-login, flask_migrate, flask_mail:
 ```
-pip install flask-wtf flask-sqlalchemy flask-login flask_migrate
+pip install flask-wtf flask-sqlalchemy flask-login flask_migrate flask_mail
 ```
 Apply the above command until every extension is installed.
 
