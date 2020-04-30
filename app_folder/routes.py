@@ -190,6 +190,11 @@ def settings():
 
 	return render_template('settings.html', title='Settings', form=delete_acc_form,availability_form=availability_form,user=current_user,meetings_form=meetings_form)
 
+@app.route('/<userpage>', methods=['GET', 'POST'])
+def show_user_cal(userpage):
+    userscal = User.query.filter_by(username=userpage).first()
+    return render_template('calendar.html', user=userscal)
+
 # CODE FROM MASTER BRANCH
 
 
