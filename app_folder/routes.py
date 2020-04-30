@@ -39,7 +39,7 @@ def index():
     Returns:
             The HTML template that will be rendered when a guest first visits the application. This is the home page.
     '''
-    return render_template('index.html', title='Home', User=User, current_user=current_user,cal=cal.formatmonth(datetime.date.today().year, datetime.date.today().month))
+    return render_template('index.html', title='Home', User=User, current_user=current_user)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -193,7 +193,7 @@ def settings():
 @app.route('/<userpage>', methods=['GET', 'POST'])
 def show_user_cal(userpage):
     userscal = User.query.filter_by(username=userpage).first()
-    return render_template('calendar.html', user=userscal)
+    return render_template('calendar.html', user=userpage,cal=cal.formatmonth(datetime.date.today().year, datetime.date.today().month))
 
 # CODE FROM MASTER BRANCH
 
