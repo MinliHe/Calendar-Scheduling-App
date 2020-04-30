@@ -104,7 +104,7 @@ def createAccount():
             flash(e)
     return render_template('createAccount.html', title='Create Account', form=current_form)
 
-
+'''
 @app.route('/createEvent', methods=['GET', 'POST'])
 def createEvent():
     if request.method == 'POST':
@@ -114,8 +114,8 @@ def createEvent():
             descriptionOfMeeting = request.form['descriptionOfMeeting']
             participants = request.form['participants']
 
-    db.session.add(meetingDate)
-    db.session.commit()
+        db.session.add(meetingDate)
+        db.session.commit()
     if meetingDate >= datetime.utcnow :
         db.session.add(meetingDate)
         db.session.commit()
@@ -139,7 +139,7 @@ def createEvent():
     return render_template('creatEvent.html', title='Schedule A Meeting', meetingDate = meetingDate, 
                             meetingTime = meetingTime, descriptionOfMeeting = descriptionOfMeeting,
                             participants = participants)
-
+'''
 @app.route('/meetingsPage', methods=['GET', 'POST'])
 def meetingsPage():
     return render_template('meetingsPage.html', title='Scheduled Meeting List')

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {% extends "base.html" %}
 
 {% block content %}
@@ -20,7 +19,7 @@
 {{cal|safe}}
 
 <P>
-    <a href="/meetingPage">
+    <a href="/meetingsPage">
         <button>
             Check Scheduled Meeting
         </button>
@@ -31,49 +30,3 @@
 {% endblock %}
 
 
-=======
-{% extends "base.html" %}
-
-{% block content %}
-    <h1>Calendar Scheduling App Home Page</h1>
-    <p>Welcome to the home page!</p>
-    <!-- {{ User.query.all()}} -->
-    {% if current_user.is_anonymous %}
-      <h1>Hi, Guest!</h1>
-      <br>
-        <p>Don't have an account?</p>
-        <a href="/createAccount"><button>
-          Create an Account
-        </button></a>
-    {% else %}
-      <h1>Hi, {{ current_user.username }}!</h1>
-
-      <P>
-        <a href="/createEvent"><button>
-          Create Event
-        </button></a>
-        </P>
-  
-        <P>
-          <a href="/createEvent"><button>
-            Setting
-          </button></a>
-          </P>
-
-      <h2> Your List Of Scheduled Meeting </h2>
-      <h3> 
-         <link rel = "stylesheet" href="meetingsPage.css" />
-      </h3>
-
-      <table border = "5" width = "100%" cellpadding = "4" cellspacing = "3">
-        <tr>
-            <th> Meeting Date </th>
-            <th> Meeting Time </th>
-            <th> Description of Meeting </th>
-            <th> Participants </th>   
-        </tr>
-      </table>
-
-    {% endif %}
-{% endblock %}
->>>>>>> parent of a3d2cef... updated routes.py/meetingsPage.html
