@@ -14,7 +14,10 @@ Python 3.6 with pip required extensions:
 3. Flask-WTF
 4. Flask-Login
 
+##Libraries used:
 
+The Calendar module of the python standard library allowed us to display a creators calendar in HTML format. 
+The library can be found here: https://docs.python.org/3.7/library/calendar.html
 
 ### Installing
 

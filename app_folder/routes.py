@@ -237,8 +237,21 @@ def settings():
 
 @app.route('/<userpage>', methods=['GET', 'POST'])
 def show_user_cal(userpage):
+    '''
+    This method takes a username and loads the users event calendar.
+
+    Args:
+         userpage (String) : The username that will be checked for validity in the data base and used as the url. 
+
+    Returns:
+            The users event calendar if the username that was passed corresponds to a valid user. 
+            Otherwise, this method will return an html page saying the page does not exist.
+    '''
     userscal = User.query.filter_by(username=userpage).first()
-    return render_template('calendar.html', user=userpage,cal=cal.formatmonth(datetime.date.today().year, datetime.date.today().month))
+    if userscal is None:
+        return render_template('404.html', badurl=userpage)
+    else:
+        return render_template('calendar.html', user=userpage,cal=cal.formatmonth(datetime.date.today().year, datetime.date.today().month))
 
 # CODE FROM MASTER BRANCH
 
