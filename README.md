@@ -13,6 +13,7 @@ Python 3.6 with pip required extensions:
 2. Flask-SQLAlchemy
 3. Flask-WTF
 4. Flask-Login
+5. Flask-migrate
 
 ##Libraries used:
 
