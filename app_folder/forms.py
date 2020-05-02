@@ -89,6 +89,11 @@ class AppointmentForm(FlaskForm):
 
     # time must be in a specific format
     def validate_time_input(self, apptStart):
+        '''This method checks if the format of an appointment is valid. 
+
+           Args:
+                appStart (String): The string representing the appointment time. 
+        '''
         if apptStart.find(":") == -1:
             raise ValidationError("Invalid time format")
         splitAppt = apptStart.split(":")
@@ -96,6 +101,17 @@ class AppointmentForm(FlaskForm):
             raise ValidationError("Invalid time format")
 
     def validate_range(self, availableStart, availableEnd, apptStart, apptEnd):
+        '''This method checks if a potential appointment's time range is within the users vailable time range. 
+        
+            Args:
+                availableStart (String): The string representation of the first available time slot of a user. 
+
+                availableEnd (String): The string representation of the last available time slot of a user.
+
+                apptStart (String): The string representation of the start time of a potential appointment with the user. This start time will be compared with the users specified available start and end time. 
+
+                apptEnd (String): The string representation of the end time of a potential appointment with the user. This start time will be compared with the users specified available start and end time. 
+        '''
         splitAvailStart = availableStart.split(":")
         splitAvailEnd = availableEnd.split(":")
         splitApptStart = apptStart.split(":")
