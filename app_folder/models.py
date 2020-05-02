@@ -82,6 +82,9 @@ class listOfMeetings(UserMixin, db.Model):
     participants = db.Column(db.String(64))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
+    def __repr__(self):
+        return '<Appointment with{}, on {} from {}>'.format(self.participants, self.meetingDate, self.meetingTime)
+
 class CustomHTMLCalendar(UserMixin, HTMLCalendar, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

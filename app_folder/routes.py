@@ -39,7 +39,7 @@ def load_user(user_id):
             The user Object that corresponds with the user_id that was passed or none if there is no corresponding user.
     '''
     return User.query.get(int(user_id))
-    
+
 
 @app.route("/")
 @app.route('/index')
@@ -164,9 +164,13 @@ def createEvent():
                             meetingTime = meetingTime, descriptionOfMeeting = descriptionOfMeeting,
                             participants = participants)
 '''
+@login_required
 @app.route('/meetingsPage', methods=['GET', 'POST'])
 def meetingsPage():
-    return render_template('meetingsPage.html', title='Scheduled Meeting List')
+    appointments_list = None
+    if not current_user.is_anonymous and current_user.appointments != None :
+        appointments_list = current_user.appointments.query.all()
+    return render_template('meetingsPage.html', title='Scheduled Meeting List', appointments_list=appointments_list)
     # return render_template('createEvent.html', title='Schedule A Meeting', form = form)
 
 @login_required
@@ -291,7 +295,7 @@ def createAppointment(userpage, day):
             current_form.validate_time_input(current_form.start_time.data)
             endTime = calculateEndTime()
             current_form.validate_range(availability.from_time, availability.to_time, current_form.start_time.data, endTime)
-            appointment = listOfMeetings(user_id=userscal.id,meetingDate=datetime.date.today().month,meetingTime="{} - {}".format(current_form.start_time.data, endTime), participants=current_form.person.data, descriptionOfMeeting=current_form.details.data)
+            appointment = listOfMeetings(user_id=userscal.id,meetingDate="{}/{}".format(datetime.date.today().month,day),meetingTime="{} - {}".format(current_form.start_time.data, endTime), participants=current_form.person.data, descriptionOfMeeting=current_form.details.data)
             db.session.merge(appointment)
             db.session.commit()
             flash("** Successfully Created Appointment! **")

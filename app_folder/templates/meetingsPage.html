@@ -2,18 +2,34 @@
 
 {% block content %}
 
-<h1> Your List Of Scheduled Meeting </h1>
+<h1>Scheduled Meetings</h1>
 <h2>
    <link rel = "stylesheet" href="meetingsPage.css" />
 </h2>
 
 <table border = "5" width = "100%" cellpadding = "4" cellspacing = "3">
-  <tr>
-      <th> Meeting Date </th>
-      <th> Meeting Time </th>
-      <th> Description of Meeting </th>
-      <th> Participants </th>
-  </tr>
+  {% if appointments_list != None %}
+    <tr>
+        <th> Meeting Date </th>
+        <th> Meeting Time </th>
+        <th> Participant </th>
+        <th> Description of Meeting </th>
+    </tr>
+
+      {% for item in appointments_list %}
+        <tr>
+          <td>{{ item.meetingDate }} </td>
+          <td>{{ item.meetingTime }}</td>
+          <td>{{ item.participants }}</td>
+          <td>{{ item.descriptionOfMeeting }}</td>
+        </tr>
+      {% endfor %}
+  {% else %}
+
+    <h3>You have no scheduled meetings.</h3>
+
+  {% endif %}
+
 </table>
 
 {% endblock %}
