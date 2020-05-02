@@ -170,7 +170,7 @@ def createEvent():
 def meetingsPage():
     appointments_list = None
     if not current_user.is_anonymous and current_user.appointments != None :
-        appointments_list = current_user.appointments.query.all()
+        appointments_list = current_user.appointments.query.filter_by(user_id = current_user.id)
     return render_template('meetingsPage.html', title='Scheduled Meeting List', appointments_list=appointments_list)
     # return render_template('createEvent.html', title='Schedule A Meeting', form = form)
 
