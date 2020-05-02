@@ -67,16 +67,48 @@ class RegistrationForm(FlaskForm):
 
 class DeleteAccountForm(FlaskForm):
 	submit = SubmitField('Delete Account')
-	
+
 class AvailabitityForm(FlaskForm):
 	from_time = StringField('From time', validators=[DataRequired()])
 	to_time = StringField('From time', validators=[DataRequired()])
 	submit = SubmitField('Set Availability')
-	
+
 class MeetingsForm(FlaskForm):
 	length = StringField('Length of meetings', validators=[DataRequired()])
 	submit = SubmitField('Set Meetings length')
-	
+
 class EmailConfirmationForm(FlaskForm):
 	confirmation = StringField('From time', validators=[DataRequired()])
 	submit = SubmitField('Set Email Confirmation')
+
+class AppointmentForm(FlaskForm):
+    start_time = StringField('Start time', validators=[DataRequired()])
+    person = StringField('Name', validators=[DataRequired()])
+    details = StringField('Details')
+    submit = SubmitField('Make Appointment')
+
+    # time must be in a specific format
+    def validate_time_input(self, apptStart):
+        if apptStart.find(":") == -1:
+            raise ValidationError("Invalid time format")
+        splitAppt = apptStart.split(":")
+        if len(splitAppt[0]) > 2 or len(splitAppt[0]) == 0 or len(splitAppt[1]) != 2:
+            raise ValidationError("Invalid time format")
+
+    def validate_range(self, availableStart, availableEnd, apptStart, apptEnd):
+        splitAvailStart = availableStart.split(":")
+        splitAvailEnd = availableEnd.split(":")
+        splitApptStart = apptStart.split(":")
+        splitApptEnd = apptEnd.split(":")
+
+        # comparing start times of availability and appointment
+        startAvailInt = int(splitAvailStart[0])*100 + int(splitAvailStart[1])
+        startApptInt = int(splitApptStart[0])*100 + int(splitApptStart[1])
+        if startApptInt < startAvailInt:
+            raise ValidationError('Time chosen is not during the available times.')
+
+        # comparing end times of availability and appointment
+        endAvailInt = int(splitAvailEnd[0])*100 + int(splitAvailEnd[1])
+        endApptInt = int(splitApptEnd[0])*100 + int(splitApptEnd[1])
+        if endAvailInt < endApptInt:
+            raise ValidationError('Time chosen is too close to the end of the available times.')

@@ -15,5 +15,5 @@ from app_folder import routes, models
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-migrate = Migrate(app, db) # this
+migrate = Migrate(app, db) 
 db.create_all()

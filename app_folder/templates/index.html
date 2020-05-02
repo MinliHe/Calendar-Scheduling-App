@@ -5,28 +5,31 @@
 <p>Welcome to the home page!</p>
 <!-- {{ User.query.all()}} -->
     {% if current_user.is_anonymous %}
-<h1>Hi, Guest!</h1>
-<br>
-<p>Don't have an account?</p>
-<a href="/createAccount">
-    <button>
-        Create an Account
-    </button>
-</a>
+      <h1>Hi, Guest!</h1>
+      <br>
+      <p>Don't have an account?</p>
+      <a href="/createAccount">
+          <button>
+              Create an Account
+          </button>
+      </a>
     {% else %}
-<h1>Hi, {{ current_user.username }}!</h1>
+      <h1>Hi, {{ current_user.username }}!</h1>
+      <p>Others can make appointments with you at
+        <a href="/{{ current_user.username }}">this link.</a>
+      </p>
 
-{{cal|safe}}
+      <br>
+      <p>Don't forget to set your availability and meeting duration in Settings!</p>
+      <br>
 
-<P>
-    <a href="/meetingsPage">
-        <button>
-            Check Scheduled Meeting
-        </button>
-    </a>
-</P>
+      <P>
+          <a href="/meetingsPage">
+              <button>
+                  Check Scheduled Meetings
+              </button>
+          </a>
+      </P>
 
     {% endif %}
 {% endblock %}
-
-
