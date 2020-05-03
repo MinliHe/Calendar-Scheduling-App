@@ -169,8 +169,8 @@ def createEvent():
 def meetingsPage():
     appointments_list = None
     if not current_user.is_anonymous and current_user.appointments != None :
-        appointments_list = current_user.appointments.query.all()
-    return render_template('meetingsPage.html', title='Scheduled Meeting List', appointments_list=appointments_list)
+        appointments_list = current_user.appointments.query.filter_by(user_id = current_user.id)
+    return render_template('meetingsPage.html', title='Scheduled Meeting List', current_user=current_user, appointments_list=appointments_list)
     # return render_template('createEvent.html', title='Schedule A Meeting', form = form)
 
 @login_required
@@ -267,36 +267,18 @@ def createAppointment(userpage, day):
         return render_template('404.html', badurl=userpage)
     availability = userscal.availability
     meetings = userscal.meetings
-
-    def calculateEndTime():
-        splitTime = current_form.start_time.data.split(":")
-        splitMeetingminutes = meetings.length.split(":")
-        if(int(splitMeetingminutes[0]) == 1):
-            endHour = int(splitTime[0]) + 1
-            endTime = str(endHour) + ":" + str(splitTime[1])
-        else:
-            endMinutes = int(splitTime[1]) + int(splitMeetingminutes[1])
-            if endMinutes >= 60:
-                endMinutes = endMinutes - 60
-                endHour = int(splitTime[0]) + 1
-                if endMinutes < 10 and endMinutes != 0:
-                    endTime = str(endHour) + ":0" + str(endMinutes)
-                elif endMinutes == 0:
-                    endTime = str(endHour) + ":00" + str(endMinutes)
-                else:
-                    endTime = str(endHour) + ":" + str(endMinutes)
-            else:
-                endHour = splitTime[0]
-                endTime = str(endHour) + ":" + str(endMinutes)
-        return endTime
+    if availability != None:
+        current_form.times.choices = availability.set_available_times(availability.from_time, meetings.length, availability.to_time)
 
     if current_form.validate_on_submit():
         try:
-            current_form.validate_time_input(current_form.start_time.data)
-            endTime = calculateEndTime()
-            current_form.validate_range(availability.from_time, availability.to_time, current_form.start_time.data, endTime)
-            appointment = listOfMeetings(user_id=userscal.id,meetingDate="{}/{}".format(datetime.date.today().month,day),meetingTime="{} - {}".format(current_form.start_time.data, endTime), participants=current_form.person.data, descriptionOfMeeting=current_form.details.data)
-            db.session.merge(appointment)
+            appointments = listOfMeetings(
+                user_id=userscal.id,
+                meetingDate="{}/{}".format(datetime.date.today().month,day),
+                meetingTime=current_form.times.data,
+                participants=current_form.person.data,
+                descriptionOfMeeting=current_form.details.data)
+            db.session.merge(appointments)
             db.session.commit()
             flash("** Successfully Created Appointment! **")
         except ValidationError as e:

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Scheduled Meetings</h1>
+<h1>Scheduled Meetings for {{ current_user.username }}</h1>
 <h2>
    <link rel = "stylesheet" href="meetingsPage.css" />
 </h2>
@@ -21,9 +21,10 @@
           <td>{{ item.meetingDate }} </td>
           <td>{{ item.meetingTime }}</td>
           <td>{{ item.participants }}</td>
-          <td>{{ item.descriptionOfMeeting }}</td>
+          <td>{{ item.descriptionOfMeeting}}</td>
         </tr>
       {% endfor %}
+
   {% else %}
 
     <h3>You have no scheduled meetings.</h3>

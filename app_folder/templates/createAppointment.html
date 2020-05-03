@@ -10,13 +10,15 @@
 
       <form action="" method="post" novalidate>
           {{ form.hidden_tag() }}
-          <p>
-              {{ form.start_time.label }} (24-hour format, hour:minute)<br>
-        			{{ form.start_time(placeholder="ex) 12:30") }}
-          </p>
-          <!-- <tr>
-            {{ availability.from_time }}
-          <tr> -->
+          <div>
+            {{ form.times.label }}
+            {% for subfield in form.times %}
+              <p>
+                {{ subfield }}
+                {{ subfield.label }}
+              </p>
+            {% endfor %}
+          </div>
           <p>
             {{ form.person.label }} (Must include name)<br>
             {{ form.person(size=32) }}
