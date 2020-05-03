@@ -62,11 +62,6 @@ class Availability(UserMixin, db.Model):
     to_time = db.Column(db.String(7), index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    availAppts = []
-
-    def getAvailAppts():
-        return availAppts
-
     def __repr__(self):
         return '<Availability from  {} to {}>'.format(self.from_time,self.to_time)
 
@@ -112,14 +107,15 @@ class Availability(UserMixin, db.Model):
         incrementAmount,
         end_time,
         ):
+        availAppts = []
         apptEndTime = self.calculateEndTime(start_time, incrementAmount)
         apptStartTime = start_time
         while self.in_range(end_time, apptEndTime):
             appointmentTime = apptStartTime + ' - ' + apptEndTime
-            self.availAppts.append((appointmentTime, appointmentTime))
+            availAppts.append((appointmentTime, appointmentTime))
             apptStartTime = apptEndTime
             apptEndTime = self.calculateEndTime(apptStartTime, incrementAmount)
-        return self.availAppts
+        return availAppts
 
 
 
