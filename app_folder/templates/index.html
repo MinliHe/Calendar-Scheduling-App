@@ -1,8 +1,21 @@
+<html lang="en">
 {% extends "base.html" %}
 
 {% block content %}
+<head>
+  <link rel="stylesheet" href="index.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<div class = "jumbotron text-center">
 <h1>Calendar Scheduling App Home Page</h1>
-<p>Welcome to the home page!</p>
+<p class="text-info"> Welcome to the home page!</p>
+</div>
+<div class="text-center">
 <!-- {{ User.query.all()}} -->
     {% if current_user.is_anonymous %}
       <h1>Hi, Guest!</h1>
@@ -14,7 +27,7 @@
           </button>
       </a>
     {% else %}
-      <h1>Hi, {{ current_user.username }}!</h1>
+      <h1 class="text-info" class="text-center" class="text-justify">Hi, {{ current_user.username }}!</h1>
       <p>Others can make appointments with you at
         <a href="/{{ current_user.username }}">this link.</a>
       </p>
@@ -22,6 +35,8 @@
       <br>
       <p>Don't forget to set your availability and meeting duration in Settings!</p>
       <br>
+</div>
 
     {% endif %}
 {% endblock %}
+</html>
