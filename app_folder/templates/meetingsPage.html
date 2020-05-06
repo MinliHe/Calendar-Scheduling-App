@@ -2,11 +2,12 @@
 
 {% block content %}
 
-<h1>Scheduled Meetings for {{ current_user.username }}</h1>
+<h1 class="text-info">Scheduled Meetings for {{ current_user.username }}</h1>
 <h2>
    <link rel = "stylesheet" href="meetingsPage.css" />
 </h2>
 
+<div class="text-center">
 <table border = "5" width = "100%" cellpadding = "4" cellspacing = "3">
   {% if appointments_list != None %}
     <tr>
@@ -27,10 +28,11 @@
 
   {% else %}
 
-    <h3>You have no scheduled meetings.</h3>
+    <h3 class="text-danger">You have no scheduled meetings.</h3>
 
   {% endif %}
 
 </table>
+</div>
 
 {% endblock %}
