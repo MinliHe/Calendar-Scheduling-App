@@ -79,7 +79,11 @@ class MeetingsForm(FlaskForm):
 
 class EmailConfirmationForm(FlaskForm):
 	confirmation = StringField('From time', validators=[DataRequired()])
-	submit = SubmitField('Set Email Confirmation')
+	submit = SubmitField('Change email')
+
+class SendEmailForm(FlaskForm):
+    sendEmail = RadioField('Change notification settings', choices=[("True", "Send email when someone makes an appointment"),("False", "Do not send email")])
+    submit = SubmitField('Change notification settings')
 
 class AppointmentForm(FlaskForm):
     times = RadioField('Select appointment time', choices=[])

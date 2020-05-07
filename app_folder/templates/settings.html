@@ -45,14 +45,31 @@
 		</div>
         <p>{{ meetings_form.submit(class_="form-control") }}</p>
 	</form>
-	<label class="text-primary">
-	Email Confirmation Setting<br/>
+
+  <label class="text-primary">
+	Notification settings<br/>
 	</label>
+	<form action="" method="post" style="width=250"  class="form-group" novalidate>
+		{{ form.hidden_tag() }}
+    <p>Current setting: {{ user.sendEmailConfirm }}</p>
+    {% for subfield in send_email_form.sendEmail %}
+    <p>
+      {{ subfield }}
+      {{ subfield.label }}
+    <p>
+    {% endfor %}
+    <p>{{ send_email_form.submit(class_="form-control") }}</p>
+  </form>
+
+	<label class="text-primary">
+	Change email<br/>
+	</label>
+  <p>Current email: {{user.email }}</p>
 	<form action="" method="post" style="width=250"  class="form-group" novalidate>
 		{{ form.hidden_tag() }}
 		{{ email_form.confirmation(value=user.email_confirmation,class_="form-control") }}
         <p>{{ email_form.submit(class_="form-control") }}</p>
-    </form>
+  </form>
 
 <script type="text/javascript">
 		$( document ).ready(function() {
@@ -64,6 +81,7 @@
 		});
 </script>
 <style>
-input, select, textarea { max-width: 280px; }
+input, select, textarea { max-width: 210px; }
+.input-group-addon { width: 0%; }
 </style>
 {% endblock %}

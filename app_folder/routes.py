@@ -2,7 +2,7 @@ from flask import render_template
 from flask import redirect
 from flask import flash, url_for
 from app_folder import app, db, login_manager
-from .forms import LoginForm, RegistrationForm, DeleteAccountForm, AvailabitityForm, MeetingsForm, EmailConfirmationForm, AppointmentForm
+from .forms import LoginForm, RegistrationForm, DeleteAccountForm, AvailabitityForm, MeetingsForm, EmailConfirmationForm, AppointmentForm, SendEmailForm
 from .models import User, Availability,Meetings, listOfMeetings, CustomHTMLCalendar
 import flask_login
 import flask
@@ -106,7 +106,7 @@ def createAccount():
         return redirect (url_for('index'))
     current_form = RegistrationForm()
     if current_form.validate_on_submit():
-        login_user = User(username=current_form.username.data, email=current_form.email.data)
+        login_user = User(username=current_form.username.data, email=current_form.email.data, sendEmailConfirm="Yes")
         login_user.set_password(current_form.password.data)
         db.session.add(login_user)
         db.session.commit()
@@ -191,6 +191,7 @@ def settings():
 	availability_form = AvailabitityForm(request.form)
 	email_confirmation_form = EmailConfirmationForm(request.form)
 	meetings_form = MeetingsForm(request.form)
+	send_email_form = SendEmailForm(request.form)
 	current_user = flask_login.current_user
 	if request.method == 'POST':
 		if 'Delete Account' == request.form['submit'] :
@@ -223,7 +224,7 @@ def settings():
 		elif 'Set Meetings length' == request.form['submit']:
 			meetings = Meetings(user_id=current_user.id,length=meetings_form.length.data)
 			if  str(meetings_form.length.data) != "00:15" and str(meetings_form.length.data) != "00:30" and str(meetings_form.length.data) != "01:00" :
-				flash("use 00:15, 00:30 minutes or 01:00 hour  slots"+str(meetings_form.length.data)+ str(str(meetings_form.length.data) == "00:15"))
+				flash("Use 00:15, 00:30 minutes or 01:00 hour  slots. You selected: "+str(meetings_form.length.data))
 			else:
 				if current_user.meetings:
 					meetings = Meetings.query.get(current_user.meetings.id)
@@ -236,18 +237,25 @@ def settings():
 					db.session.commit()
 				print("Setting meetings length")
 				current_user = User.query.get(int(current_user.id))
-		elif 'Set Email Confirmation' == request.form['submit']:
-			current_user.email_confirmation = email_confirmation_form.confirmation.data
+
+		elif 'Change notification settings' == request.form['submit']:
+			current_user.sendEmailConfirm = send_email_form.sendEmail.data
+			db.session.merge(current_user)
+			db.session.commit()
+
+		elif 'Change email' == request.form['submit']:
+			current_user.email = email_confirmation_form.confirmation.data
 			db.session.merge(current_user)
 			db.session.commit()
 			current_user = User.query.get(int(current_user.id))
 
-			msg = Message('Hello', sender = '2020131springteam6@gmail.com', recipients = ['thllmxx@gmail.com'])
-			msg.body = "Hello Flask message sent from Flask-Mail"
+			msg = Message('Calendar Scheduling App Email Changed', sender = '2020131springteam6@gmail.com', recipients = [email_confirmation_form.confirmation.data])
+			msg.body = "Hello " + current_user.username +"," + "\n" + "You have successfully updated your email for the Calendar Scheduling App."
 			mail.send(msg)
+			flash("Email confirmation sent.")
 
 
-	return render_template('settings.html', title='Settings', form=delete_acc_form,availability_form=availability_form,user=current_user,meetings_form=meetings_form,email_form=email_confirmation_form)
+	return render_template('settings.html', title='Settings', form=delete_acc_form,availability_form=availability_form,user=current_user,meetings_form=meetings_form,email_form=email_confirmation_form, send_email_form=send_email_form)
 
 
 @app.route('/<userpage>', methods=['GET', 'POST'])
@@ -282,8 +290,11 @@ def createAppointment(userpage, day):
     if availability != None:
         totalappointments = availability.set_available_times(availability.from_time, meetings.length, availability.to_time)
         today = str(datetime.date.today().month) + "/" + str(day)
-        listOfTotalPossibleAppt = userscal.appointments.query.filter_by(meetingDate=today, user_id=userscal.id)
-        toChooseFrom = availability.remove_busy_times(totalappointments, listOfTotalPossibleAppt)
+        if userscal.appointments != None:
+            listOfTotalPossibleAppt = userscal.appointments.query.filter_by(meetingDate=today, user_id=userscal.id)
+            toChooseFrom = availability.remove_busy_times(totalappointments, listOfTotalPossibleAppt)
+        else:
+            toChooseFrom = totalappointments
         allBooked = False
         if len(toChooseFrom) != 0:
             current_form.times.choices = toChooseFrom
@@ -302,6 +313,11 @@ def createAppointment(userpage, day):
                 descriptionOfMeeting=current_form.details.data)
             db.session.merge(appointments)
             db.session.commit()
+            dateTime = "{}/{}".format(datetime.date.today().month,day)
+            if(userscal.sendEmailConfirm == "True"):
+                msg = Message('Appointment Made', sender = '2020131springteam6@gmail.com', recipients = [userscal.email])
+                msg.body = "Hello " + current_user.username + "," + "\n"+ current_form.person.data + " just made an appointment with you on " + dateTime + " from " + current_form.times.data + "."
+                mail.send(msg)
             flash("** Successfully Created Appointment! You can now close this tab. **")
         except ValidationError as e:
             flash(e)
