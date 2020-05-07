@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Create an Account</h1>
+    <link rel="stylesheet" href="{{url_for('.static', filename = 'createAccount.css')}}">
+
+<div class="text-center">
+    <h1 class="text-primary">Create an Account</h1>
 
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
@@ -23,5 +26,5 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
-
+</div>
 {% endblock %}
