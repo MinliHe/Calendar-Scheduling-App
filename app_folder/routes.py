@@ -268,8 +268,19 @@ def createAppointment(userpage, day):
         return render_template('404.html', badurl=userpage)
     availability = userscal.availability
     meetings = userscal.meetings
+    listOfMadeMeetings = userscal.appointments
     if availability != None:
-        current_form.times.choices = availability.set_available_times(availability.from_time, meetings.length, availability.to_time)
+        totalappointments = availability.set_available_times(availability.from_time, meetings.length, availability.to_time)
+        today = str(datetime.date.today().month) + "/" + str(day)
+        listOfTotalPossibleAppt = userscal.appointments.query.filter_by(meetingDate=today, user_id=userscal.id)
+        toChooseFrom = availability.remove_busy_times(totalappointments, listOfTotalPossibleAppt)
+        allBooked = False
+        if len(toChooseFrom) != 0:
+            current_form.times.choices = toChooseFrom
+        else:
+            allBooked = True
+            current_form.times.choices = None
+
 
     if current_form.validate_on_submit():
         try:
@@ -281,8 +292,8 @@ def createAppointment(userpage, day):
                 descriptionOfMeeting=current_form.details.data)
             db.session.merge(appointments)
             db.session.commit()
-            flash("** Successfully Created Appointment! **")
+            flash("** Successfully Created Appointment! You can now close this tab. **")
         except ValidationError as e:
             flash(e)
 
-    return render_template('createAppointment.html', user=userpage, month=datetime.date.today().month, day=day, form=current_form, availability=availability, meetings=meetings)
+    return render_template('createAppointment.html', user=userpage, month=datetime.date.today().month, day=day, form=current_form, availability=availability, meetings=meetings, allBooked=allBooked)

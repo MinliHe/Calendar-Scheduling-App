@@ -100,6 +100,7 @@ class Availability(UserMixin, db.Model):
         else:
             return True
 
+
     # add to an array to hold all the possible meeting intervals
     def set_available_times(
         self,
@@ -117,6 +118,13 @@ class Availability(UserMixin, db.Model):
             apptEndTime = self.calculateEndTime(apptStartTime, incrementAmount)
         return availAppts
 
+    def remove_busy_times(self, apptArray, listOfMadeMeetingsArray):
+        #this gets an array of the appointments that that user has on that day
+        something = []
+        for times in listOfMadeMeetingsArray:
+            if ((times.meetingTime, times.meetingTime)) in apptArray:
+                apptArray.remove((times.meetingTime, times.meetingTime))
+        return apptArray
 
 
 class Meetings(UserMixin, db.Model):
@@ -129,8 +137,8 @@ class Meetings(UserMixin, db.Model):
 
 class listOfMeetings(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    meetingDate = db.Column(db.Integer)
-    meetingTime = db.Column(db.Integer)
+    meetingDate = db.Column(db.String)
+    meetingTime = db.Column(db.String)
     descriptionOfMeeting = db.Column(db.String(150))
     participants = db.Column(db.String(64))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

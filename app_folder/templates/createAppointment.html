@@ -3,10 +3,11 @@
 {% block content %}
     <h1>Appointment with {{ user }} on: {{ month }}/{{ day }}</h1>
 
-    {% if availability != None and meetings != None %}
+    {% if availability != None and meetings != None and not allBooked %}
 
-      <h2>{{ user }} is available from {{ availability.from_time }} to {{ availability.to_time }}</h2>
-      <h3>Appointments will be in {{ meetings.length }} intervals</h3>
+      <!-- <h2>{{ user }} is generally available from {{ availability.from_time }} to {{ availability.to_time }}</h2>
+      <h3>Appointments will be in {{ meetings.length }} intervals</h3> -->
+
 
       <form action="" method="post" novalidate>
           {{ form.hidden_tag() }}
