@@ -4,23 +4,23 @@
     <link rel="stylesheet" href="{{url_for('.static', filename = 'createAccount.css')}}">
 
 <div class="text-center">
-    <h1 class="text-primary">Create an Account</h1>
+    <h1 class="text-info">Create an Account</h1>
 
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
-        <p>
+        <p class="text-primary"> 
             {{ form.username.label }}<br>
             {{ form.username(size=32) }}
         </p>
-        <p>
+        <p class="text-primary">
             {{ form.email.label }}<br>
             {{ form.email(size=32) }}
         </p>
-        <p>
+        <p class="text-primary">
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}
         </p>
-        <p>
+        <p class="text-primary">
             {{ form.password2.label }}<br>
             {{ form.password2(size=32) }}
         </p>
