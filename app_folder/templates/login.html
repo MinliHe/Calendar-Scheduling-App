@@ -11,14 +11,14 @@
   </head>
 
 <div class="text-center">
-    <h1>Sign In</h1>
+    <h1 class="text-info">Sign In</h1>
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
-        <p class="text-info">
+        <p class="text-primary">
             {{ form.username.label }}<br>
             {{ form.username(size=32) }}
         </p>
-        <p class="text-info">
+        <p class="text-primary">
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}
         </p>
