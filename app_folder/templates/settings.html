@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Settings</h1>
+    <h1 class="text-info">Settings</h1>
 
     <form action="" method="post" style="width=250"   class="form-group" novalidate>
 		{{ form.hidden_tag() }}
         <p>{{ form.submit(class_="form-control") }}</p>
-    </form>
+	</form>
+	<label class="text-primary">
 	Availability<br/>
+	</label>
   {% if user.availability != None %}
 	  <p> {{user.availability}} </p>
   {% endif %}
@@ -27,8 +29,9 @@
 		</div>
         <p>{{ availability_form.submit(class_="form-control") }}</p>
     </form>
-
+	<label class="text-primary">
 	Meetings length<br/>
+	</label>
   {% if user.meetings != None %}
 	  <p>{{user.meetings}} </p>
   {% endif %}
@@ -41,8 +44,10 @@
 			</span>
 		</div>
         <p>{{ meetings_form.submit(class_="form-control") }}</p>
-    </form>
+	</form>
+	<label class="text-primary">
 	Email Confirmation Setting<br/>
+	</label>
 	<form action="" method="post" style="width=250"  class="form-group" novalidate>
 		{{ form.hidden_tag() }}
 		{{ email_form.confirmation(value=user.email_confirmation,class_="form-control") }}
