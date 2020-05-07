@@ -51,6 +51,16 @@ def index():
     '''
     return render_template('index.html', title='Home', User=User, current_user=current_user)
 
+@app.route("/")
+@app.route('/splashpage')
+def splashpage():
+    '''This method creates the webpage that will display when a guest visits the splash page for this application.
+
+    Returns:
+            The HTML template that will be rendered when a guest visists the splash page.
+    '''
+    return render_template('splashpage.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     '''
