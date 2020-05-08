@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<div class = "jumbotron text-center">
+<div class = "jumbotron text-center" class="p-3 mb-2 bg-info text-white">
 <h1>Calendar Scheduling App Home Page</h1>
 <p class="text-info"> Welcome to the home page!</p>
 </div>
@@ -28,9 +28,11 @@
       </a>
     {% else %}
       <h1 class="text-info" class="text-center" class="text-justify">Hi, {{ current_user.username }}!</h1>
+      <div class="alert alert-info" role="alert">
       <p>Others can make appointments with you at
-        <a href="/{{ current_user.username }}">this link.</a>
+        <a href="/{{ current_user.username }}"><strong>this link.</strong></a>
       </p>
+    </div>
 
       <br>
       <p>Don't forget to set your availability and meeting duration in Settings!</p>
