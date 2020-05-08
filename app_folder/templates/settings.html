@@ -1,87 +1,103 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="text-info">Settings</h1>
+<h1 class="text-info text-center">Settings</h1>
 
-    <form action="" method="post" style="width=250"   class="form-group" novalidate>
-		{{ form.hidden_tag() }}
-        <p>{{ form.submit(class_="form-control") }}</p>
-	</form>
+<form action="" method="post" class="form-group" novalidate>
+	{{ form.hidden_tag() }}
+	<p>{{ form.submit(class_="form-control") }}</p>
 	<label class="text-primary">
-	Availability<br/>
+		Availability<br />
 	</label>
-  {% if user.availability != None %}
-	  <p> {{user.availability}} </p>
-  {% endif %}
-	<form action="" method="post" style="width=250"  class="form-group" novalidate>
-		{{ form.hidden_tag() }}
-		<div class="input-group clockpicker">
-			{{ availability_form.from_time(class_="form-control") }}
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-time"></span>
-			</span>
-		</div>
-		<div class="input-group clockpicker">
-			{{ availability_form.to_time(class_="form-control") }}
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-time"></span>
-			</span>
-		</div>
-        <p>{{ availability_form.submit(class_="form-control") }}</p>
-    </form>
-	<label class="text-primary">
-	Meetings length<br/>
-	</label>
-  {% if user.meetings != None %}
-	  <p>{{user.meetings}} </p>
-  {% endif %}
-	<form action="" method="post" style="width=250"  class="form-group" novalidate>
-		{{ form.hidden_tag() }}
-		<div class="input-group clockpicker">
-			{{ meetings_form.length(class_="form-control") }}
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-time"></span>
-			</span>
-		</div>
-        <p>{{ meetings_form.submit(class_="form-control") }}</p>
-	</form>
+</form>
 
-  <label class="text-primary">
-	Notification settings<br/>
-	</label>
-	<form action="" method="post" style="width=250"  class="form-group" novalidate>
-		{{ form.hidden_tag() }}
-    <p>Current setting: {{ user.sendEmailConfirm }}</p>
-    {% for subfield in send_email_form.sendEmail %}
-    <p>
-      {{ subfield }}
-      {{ subfield.label }}
-    <p>
-    {% endfor %}
-    <p>{{ send_email_form.submit(class_="form-control") }}</p>
-  </form>
-
+{% if user.availability != None %}
+<p> {{user.availability}} </p>
+{% endif %}
+<form action="" method="post" class="form-group" novalidate>
+	{{ form.hidden_tag() }}
+	<div class="input-group clockpicker">
+		{{ availability_form.from_time(class_="form-control") }}
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-time"></span>
+		</span>
+	</div>
+	<div class="input-group clockpicker">
+		{{ availability_form.to_time(class_="form-control") }}
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-time"></span>
+		</span>
+	</div>
+	<p>{{ availability_form.submit(class_="form-control") }}</p>
 	<label class="text-primary">
-	Change email<br/>
+		Meetings length<br />
 	</label>
-  <p>Current email: {{user.email }}</p>
-	<form action="" method="post" style="width=250"  class="form-group" novalidate>
-		{{ form.hidden_tag() }}
-		{{ email_form.confirmation(value=user.email_confirmation,class_="form-control") }}
-        <p>{{ email_form.submit(class_="form-control") }}</p>
-  </form>
+</form>
+
+{% if user.meetings != None %}
+<p>{{user.meetings}} </p>
+{% endif %}
+<form action="" method="post" class="form-group" novalidate>
+	{{ form.hidden_tag() }}
+	<div class="input-group clockpicker">
+		{{ meetings_form.length(class_="form-control") }}
+		<span class="input-group-addon">
+			<span class="glyphicon glyphicon-time"></span>
+		</span>
+	</div>
+	<p>{{ meetings_form.submit(class_="form-control") }}</p>
+</form>
+
+
+<form action="" method="post" class="form-group" novalidate>
+	<label class="text-primary">
+		Notification settings<br />
+	</label>
+	{{ form.hidden_tag() }}
+	<p>Current setting: {{ user.sendEmailConfirm }}</p>
+	{% for subfield in send_email_form.sendEmail %}
+	<p>
+		{{ subfield }}
+		{{ subfield.label }}
+	<p>
+		{% endfor %}
+	<p>{{ send_email_form.submit(class_="form-control") }}</p>
+</form>
+
+
+<form action="" method="post" class="form-group" novalidate>
+	<label class="text-primary">
+		Change email<br />
+	</label>
+	<p>Current email: {{user.email }}</p>
+	{{ form.hidden_tag() }}
+	{{ email_form.confirmation(value=user.email_confirmation,class_="form-control") }}
+	<p>{{ email_form.submit(class_="form-control") }}</p>
+</form>
 
 <script type="text/javascript">
-		$( document ).ready(function() {
-			$('.clockpicker').clockpicker({
-				placement: 'bottom',
-				align: 'left',
-				donetext: 'Done'
-			});
+	$(document).ready(function () {
+		$('.clockpicker').clockpicker({
+			placement: 'bottom',
+			align: 'left',
+			donetext: 'Done'
 		});
+	});
 </script>
 <style>
-input, select, textarea { max-width: 210px; }
-.input-group-addon { width: 0%; }
+	input,
+	select,
+	textarea {
+		max-width: 210px;
+	}
+
+	.input-group-addon {
+		width: 0%;
+	}
+	.form-group{
+	margin-left: 45%;
+    margin-right:45%;
+    width: 100%;
+	}
 </style>
 {% endblock %}
