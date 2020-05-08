@@ -1,7 +1,16 @@
 ﻿{% extends "base.html" %}
 
 {% block content %}
-    <h1>{{user}}'s Calendar</h1>
+<div class="container">   
 
-    {{cal|safe}}
+    <h1 class="text-info">{{user}}'s Calendar</h1>
+    </br>
+    <div class="row">
+    <div class = "column">
+        <div class = "d-flex justify-content-center">  
+        {{cal|safe}}
+    </div>
+    </div> 
+    </div>
+</div>
 {% endblock %}
