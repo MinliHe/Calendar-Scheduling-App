@@ -2,7 +2,7 @@ from flask import render_template
 from flask import redirect
 from flask import flash, url_for
 from app_folder import app, db, login_manager
-from .forms import LoginForm, RegistrationForm, DeleteAccountForm, AvailabitityForm, MeetingsForm, EmailConfirmationForm, AppointmentForm, SendEmailForm
+from .forms import LoginForm, RegistrationForm, DeleteAccountForm, AvailabitityForm, MeetingsForm, EmailConfirmationForm, AppointmentForm, SendEmailForm, SearchUserForm
 from .models import User, Availability,Meetings, listOfMeetings, CustomHTMLCalendar
 import flask_login
 import flask
@@ -51,15 +51,22 @@ def index():
     '''
     return render_template('index.html', title='Home', User=User, current_user=current_user)
 
-@app.route("/")
-@app.route('/splashpage')
+
+@app.route('/splashpage', methods=['GET', 'POST'])
 def splashpage():
     '''This method creates the webpage that will display when a guest visits the splash page for this application.
 
     Returns:
             The HTML template that will be rendered when a guest visists the splash page.
     '''
-    return render_template('splashpage.html')
+    form = SearchUserForm(request.form)
+    if request.method == 'POST':
+        userscal = User.query.filter_by(username=form.username.data).first()
+        if userscal is not None:
+            return redirect(userscal.username)
+
+    return render_template('splashpage.html', form = form)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

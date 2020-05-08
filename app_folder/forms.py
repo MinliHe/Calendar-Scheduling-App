@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, ValidationError,HiddenField,BooleanField, RadioField
 from wtforms.validators import DataRequired, Email, DataRequired, EqualTo, InputRequired
 from .models import User
+from flask import render_template, redirect, url_for, flash
 
 class LoginForm(FlaskForm):
     '''This class defines the form that will be seen when a user tries to log into the Calendar-Scheduling-App.
@@ -90,3 +91,9 @@ class AppointmentForm(FlaskForm):
     person = StringField('Name', validators=[DataRequired()])
     details = StringField('Details')
     submit = SubmitField('Make Appointment')
+
+
+class SearchUserForm(FlaskForm):
+    username = StringField('Search for user by name',validators=[DataRequired()] )
+    submit = SubmitField('Search')
+
