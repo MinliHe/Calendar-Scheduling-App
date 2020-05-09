@@ -15,6 +15,7 @@ Python 3.6 with pip required extensions:
 3. Flask-WTF
 4. Flask-Login
 5. Flask-migrate
+6. email_validator
 
 ## Libraries used:
 
@@ -30,9 +31,9 @@ Install Flask:
 ```
 pip install Flask
 ```
-Install flask-wtf, flask-sqlalchemy, flask-login, flask_migrate, flask_mail:
+Install flask-wtf, flask-sqlalchemy, flask-login, flask_migrate, flask_mail,email_validator
 ```
-pip install flask-wtf flask-sqlalchemy flask-login flask_migrate flask_mail
+pip install flask-wtf flask-sqlalchemy flask-login flask_migrate flask_mail email_validator
 ```
 Apply the above command until every extension is installed.
 
