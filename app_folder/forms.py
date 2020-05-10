@@ -83,7 +83,7 @@ class EmailConfirmationForm(FlaskForm):
 	submit = SubmitField('Change email')
 
 class SendEmailForm(FlaskForm):
-    sendEmail = RadioField('Change notification settings', choices=[("True", "Send email when someone makes an appointment"),("False", "Do not send email")])
+    sendEmail = RadioField('Change notification settings', choices=[("True", "Send email when appointment is made"),("False", "Do not send email")])
     submit = SubmitField('Change notification settings')
 
 class AppointmentForm(FlaskForm):
@@ -96,4 +96,3 @@ class AppointmentForm(FlaskForm):
 class SearchUserForm(FlaskForm):
     username = StringField('Search for user by name',validators=[DataRequired()] )
     submit = SubmitField('Search')
-

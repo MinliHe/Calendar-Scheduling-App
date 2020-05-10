@@ -12,7 +12,7 @@
 </form>
 
 {% if user.availability != None %}
-<p> {{user.availability}} </p>
+<p class="form-group"> {{user.availability}} </p>
 {% endif %}
 <form action="" method="post" class="form-group" novalidate>
 	{{ form.hidden_tag() }}
@@ -35,7 +35,7 @@
 </form>
 
 {% if user.meetings != None %}
-<p>{{user.meetings}} </p>
+<p class="form-group">{{user.meetings}} </p>
 {% endif %}
 <form action="" method="post" class="form-group" novalidate>
 	{{ form.hidden_tag() }}
@@ -95,7 +95,7 @@
 		width: 0%;
 	}
 	.form-group{
-	margin-left: 45%;
+	  margin-left: 40%;
     margin-right:45%;
     width: 100%;
 	}
