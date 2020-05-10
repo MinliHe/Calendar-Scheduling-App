@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="text-info">Scheduled Meetings for {{ current_user.username }}</h1>
+<h1 class="text-info" class = "text-center">Scheduled Meetings for {{ current_user.username }}</h1>
 <h2>
    <link rel = "stylesheet" href="meetingsPage.css" />
 </h2>
@@ -10,11 +10,11 @@
 <div class="text-center">
 <table border = "5" width = "100%" cellpadding = "4" cellspacing = "3">
   {% if appointments_list != None %}
-    <tr>
-        <th> Meeting Date </th>
-        <th> Meeting Time </th>
-        <th> Participant </th>
-        <th> Description of Meeting </th>
+    <tr class="text-primary">
+        <th class = "text-center" > Meeting Date </th>
+        <th class = "text-center" > Meeting Time </th>
+        <th class = "text-center" > Participant </th>
+        <th class = "text-center" > Description of Meeting </th>
     </tr>
 
       {% for item in appointments_list %}
