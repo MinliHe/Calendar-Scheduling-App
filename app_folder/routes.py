@@ -146,42 +146,8 @@ def time_in_range(start, end, x):
         return start <= x <= end
     else:
         return start <= x or x <= end
-'''
-@app.route('/createEvent', methods=['GET', 'POST'])
-def createEvent():
-    if request.method == 'POST':
-        try:
-            meetingDate = request.form['meetingDate']
-            meetingTime = request.form['meetingTime']
-            descriptionOfMeeting = request.form['descriptionOfMeeting']
-            participants = request.form['participants']
 
-        db.session.add(meetingDate)
-        db.session.commit()
-    if meetingDate >= datetime.utcnow :
-        db.session.add(meetingDate)
-        db.session.commit()
-    else:
-        flash('Pleasse choose another date and time.')
 
-    db.session.add(meetingTime)
-    db.session.commit()
-    if meetingTime >= datetime.utcnow :
-        db.session.add(meetingTime)
-        db.session.commit()
-    else:
-        flash('Pleasse choose another date and time.')
-
-    db.session.add(descriptionOfMeeting)
-    db.session.commit()
-
-    db.session.add(participants)
-    db.session.commit()
-
-    return render_template('creatEvent.html', title='Schedule A Meeting', meetingDate = meetingDate,
-                            meetingTime = meetingTime, descriptionOfMeeting = descriptionOfMeeting,
-                            participants = participants)
-'''
 @login_required
 @app.route('/meetingsPage', methods=['GET', 'POST'])
 def meetingsPage():
@@ -189,7 +155,7 @@ def meetingsPage():
     if not current_user.is_anonymous and current_user.appointments != None :
         appointments_list = current_user.appointments.query.filter_by(user_id = current_user.id)
     return render_template('meetingsPage.html', title='Scheduled Meeting List', current_user=current_user, appointments_list=appointments_list)
-    # return render_template('createEvent.html', title='Schedule A Meeting', form = form)
+
 
 @login_required
 @app.route('/settings', methods=['GET', 'POST'])
