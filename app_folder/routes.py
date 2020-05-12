@@ -64,7 +64,7 @@ def splashpage():
         if userscal is not None:
             return redirect(userscal.username)
 
-    return render_template('splashpage.html', form = form)
+    return render_template('SplashPage.html', form = form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
