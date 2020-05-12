@@ -41,7 +41,6 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-@app.route('/')
 @app.route('/index')
 def index():
     '''This method creates the webpage that will display when a guest first visits the application.
@@ -51,7 +50,7 @@ def index():
     '''
     return render_template('index.html', title='Home', User=User, current_user=current_user)
 
-@app.route("/splashpage", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def splashpage():
     '''This method creates the webpage that will display when a guest visits the splash page for this application.
 
